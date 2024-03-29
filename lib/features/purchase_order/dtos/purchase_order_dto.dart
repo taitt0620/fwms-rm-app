@@ -4,13 +4,15 @@
 
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 PurchaseOrderDto purchaseOrderDtoFromJson(String str) =>
     PurchaseOrderDto.fromJson(json.decode(str));
 
 String purchaseOrderDtoToJson(PurchaseOrderDto data) =>
     json.encode(data.toJson());
 
-class PurchaseOrderDto {
+class PurchaseOrderDto extends Equatable {
   final String statusCode;
   final String messagae;
   final Data data;
@@ -33,6 +35,10 @@ class PurchaseOrderDto {
         "messagae": messagae,
         "data": data.toJson(),
       };
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
 }
 
 class Data {

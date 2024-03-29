@@ -27,13 +27,13 @@ class AppTheme {
       floatingLabelStyle: TextStyle(
         color: AppPallete.blackColor,
         fontSize: 16,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w400,
       ),
       prefixIconColor: AppPallete.greyColor,
       enabledBorder: _border(),
       focusedBorder: _border(AppPallete.focusedBorderColor),
     ),
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    textTheme: ThemeData(fontFamily: 'Poppins').textTheme,
     appBarTheme: AppBarTheme(
       backgroundColor: AppPallete.backgroundColor,
       elevation: 0,
@@ -41,7 +41,7 @@ class AppTheme {
       titleTextStyle: TextStyle(
         color: AppPallete.blackColor,
         fontSize: 20,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w900,
       ),
     ),
   );

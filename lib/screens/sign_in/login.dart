@@ -7,7 +7,6 @@ import 'package:fwms_rm_app/config/router/router.dart';
 import 'package:fwms_rm_app/config/theme/app_pallete.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/screens/sign_in/widgets/auth_field.dart';
-import 'package:fwms_rm_app/widgets/custom_elevated_button.dart';
 import 'package:go_router/go_router.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -99,10 +98,10 @@ class _SignInScreenState extends State<SignInScreen> {
             ],
           ),
           SizedBox(height: 20),
-          CustomElevatedButton(
-            text: 'Sign in',
+          ElevatedButton(
+            child: Text('Retry'),
             onPressed: () {
-              _handleSignIn(context);
+              _handleRetry(context);
             },
           ),
           SizedBox(height: 20),
@@ -148,8 +147,8 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
         ),
         SizedBox(height: 20),
-        CustomElevatedButton(
-          text: 'Retry',
+        ElevatedButton(
+          child: Text('Retry'),
           onPressed: () {
             _handleRetry(context);
           },

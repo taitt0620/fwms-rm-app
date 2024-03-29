@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fwms_rm_app/widgets/custom_app_bar.dart';
+import 'package:fwms_rm_app/screens/home/widgets/item_screen.dart';
+import 'package:fwms_rm_app/common/widgets/appbar.dart';
+import 'package:fwms_rm_app/utils/constants/colors.dart';
+import 'package:fwms_rm_app/utils/constants/text_strings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,27 +15,28 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Home Screen',
-        showLeading: false,
-        showAction: false,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
-            Text(
-              'Home Screen',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      // body: Padding(
+      //   padding: const EdgeInsets.all(16.0),
+      //   child: ItemScreen(),
+      // ),
+      body: Column(
+        children: [
+          CustomAppBar(
+            title: Text(
+              AppTexts.homeTitle,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall!
+                  .apply(color: AppColors.black),
             ),
-            SizedBox(height: 16),
-            Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ItemScreen(),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

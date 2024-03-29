@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/screens/home/home_screen.dart';
-import 'package:fwms_rm_app/screens/sign_in/sign_in_screen.dart';
+import 'package:fwms_rm_app/screens/sign_in/login.dart';
+import 'package:fwms_rm_app/screens/sign_in/login_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteName {
@@ -30,7 +31,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: RouteName.login,
-      builder: (context, state) => SignInScreen(),
+      builder: (context, state) => LoginScreen(),
     ),
   ],
 );

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/config/http_client.dart';
 import 'package:fwms_rm_app/config/router/router.dart';
-import 'package:fwms_rm_app/config/theme/theme.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_api_client.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_repository.dart';
+import 'package:fwms_rm_app/utils/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -64,7 +64,7 @@ class _AppContentState extends State<AppContent> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'FWMS RM App',
-      theme: AppTheme.themeData,
+      theme: CustomAppTheme.lightTheme,
       routerConfig: router,
     );
   }
