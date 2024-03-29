@@ -34,5 +34,15 @@ class AppTheme {
       focusedBorder: _border(AppPallete.focusedBorderColor),
     ),
     textTheme: GoogleFonts.poppinsTextTheme(),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppPallete.backgroundColor,
+      elevation: 0,
+      iconTheme: IconThemeData(color: AppPallete.blackColor),
+      titleTextStyle: TextStyle(
+        color: AppPallete.blackColor,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
   );
 }

@@ -9,6 +9,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepository) : super(AuthInitial()) {
     on<AuthStarted>(_onStarted);
     on<AuthSignInStarted>(_onSignInStarted);
+    on<AuthAuthenticatedStarted>(_onAuthenticatedStarted);
   }
 
   final AuthRepository authRepository;
@@ -26,6 +27,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return (switch (result) {
       Success() => emit(AuthSigninSuccess()),
       Failure() => emit(AuthSigninFailure(result.message)),
+    });
+  }
+
+  void _onAuthenticatedStarted(
+      AuthAuthenticatedStarted event, Emitter<AuthState> emit) async {
+    final result = await authRepository.getToken();
+    return (switch (result) {
+      Success() => emit(AuthAuthenticatedSuccess(result.data)),
+      Failure() => emit(AuthAuthenticatedFailure(result.message)),
     });
   }
 }

@@ -21,11 +21,34 @@ class AuthRepository {
     try {
       final signInSuccessDto = await authApiClient
           .signIn(SignInDto(username: username, password: password));
-      await authLocalDataSource.saveToken(signInSuccessDto.tokenString);
+      await authLocalDataSource.saveToken(signInSuccessDto.data.tokenString);
     } catch (e) {
       log('$e');
       return Failure('$e');
     }
     return Success(null);
   }
+
+  Future<Result<String>> getToken() async {
+    try {
+      final token = await authLocalDataSource.getToken();
+      if (token == null) {
+        log('$token');
+        return Failure('Token is null');
+      }
+      return Success(token);
+    } catch (e) {
+      log('$e');
+      return Failure('$e');
+    }
+  }
+  // Future<Result<void>> signOut() async {
+  //   try {
+  //     await authLocalDataSource.deleteToken();
+  //   } catch (e) {
+  //     log('$e');
+  //     return Failure('$e');
+  //   }
+  //   return Success(null);
+  // }
 }

@@ -10,3 +10,5 @@ class AuthSignInStarted extends AuthEvent {
   final String username;
   final String password;
 }
+
+class AuthAuthenticatedStarted extends AuthEvent {}

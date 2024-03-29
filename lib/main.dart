@@ -33,13 +33,39 @@ class MyApp extends StatelessWidget {
         create: (context) => AuthBloc(
           context.read<AuthRepository>(),
         ),
-        child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          title: 'FWMS RM App',
-          theme: AppTheme.themeData,
-          routerConfig: router,
-        ),
+        child: AppContent(),
       ),
+    );
+  }
+}
+
+class AppContent extends StatefulWidget {
+  const AppContent({
+    super.key,
+  });
+
+  @override
+  State<AppContent> createState() => _AppContentState();
+}
+
+class _AppContentState extends State<AppContent> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AuthBloc>().add(AuthAuthenticatedStarted());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final authState = context.watch<AuthBloc>().state;
+    if (authState is AuthInitial) {
+      return Container();
+    }
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'FWMS RM App',
+      theme: AppTheme.themeData,
+      routerConfig: router,
     );
   }
 }
