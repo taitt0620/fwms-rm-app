@@ -1,6 +1,6 @@
 part of 'purchase_order_bloc.dart';
 
-abstract class PurchaseOrderState extends Equatable {
+sealed class PurchaseOrderState extends Equatable {
   const PurchaseOrderState();
 
   @override
@@ -9,19 +9,21 @@ abstract class PurchaseOrderState extends Equatable {
 
 final class PurchaseOrderInitial extends PurchaseOrderState {}
 
-final class PurchaseOrderInProgress extends PurchaseOrderState {}
+final class PurchaseOrderLoadingState extends PurchaseOrderState {}
 
-final class PurchaseOrderSuccess extends PurchaseOrderState {
+class PurchaseOrderLoadedState extends PurchaseOrderState {
   final List<PurchaseOrderResponseDto> purchaseOrders;
-
-  const PurchaseOrderSuccess(this.purchaseOrders);
+  const PurchaseOrderLoadedState(this.purchaseOrders);
 
   @override
   List<Object> get props => [purchaseOrders];
 }
 
-final class PurchaseOrderFailure extends PurchaseOrderState {
+class PurchaseOrderErrorState extends PurchaseOrderState {
   final String message;
 
-  const PurchaseOrderFailure(this.message);
+  const PurchaseOrderErrorState(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

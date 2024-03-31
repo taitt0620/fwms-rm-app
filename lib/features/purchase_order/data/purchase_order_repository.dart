@@ -4,9 +4,9 @@ import 'package:fwms_rm_app/features/purchase_order/dtos/purchase_order_response
 class PurchaseOrderRepository {
   final PurchaseOrderApiClient purchaseOrderApiClient;
 
-  PurchaseOrderRepository(this.purchaseOrderApiClient);
+  PurchaseOrderRepository({required this.purchaseOrderApiClient});
 
   Future<List<PurchaseOrderResponseDto>> fetchPurchaseOrders() async {
-    return await purchaseOrderApiClient.fetchPurchaseOrders();
+    return purchaseOrderApiClient.fetchPurchaseOrders();
   }
 }

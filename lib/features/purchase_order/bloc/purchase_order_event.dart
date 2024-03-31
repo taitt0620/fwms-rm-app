@@ -1,10 +1,6 @@
 part of 'purchase_order_bloc.dart';
 
-abstract class PurchaseOrderStarted extends Equatable {
-  const PurchaseOrderStarted();
-
+class PurchaseOrderEvent extends Equatable {
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
-
-class FetchAllPurchaseOrdersStarted extends PurchaseOrderStarted {}

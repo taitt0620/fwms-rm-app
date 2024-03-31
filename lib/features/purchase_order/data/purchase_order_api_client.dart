@@ -8,9 +8,14 @@ class PurchaseOrderApiClient {
 
   Future<List<PurchaseOrderResponseDto>> fetchPurchaseOrders() async {
     try {
-      Response response = await dio.get('/purchase-orders');
-      List<dynamic> value = response.data;
-      return value.map((e) => PurchaseOrderResponseDto.fromJson(e)).toList();
+      Response response = await dio.get('/purchase-order');
+      // Access the 'pagingData' array
+      List<dynamic> purchaseOrdersData = response.data['data']['pagingData'];
+
+      // Map over the purchase orders and parse using your model
+      return purchaseOrdersData
+          .map((e) => PurchaseOrderResponseDto.fromJson(e))
+          .toList();
     } on DioException catch (e) {
       if (e.response != null) {
         throw Exception(e.response!.data['message']);

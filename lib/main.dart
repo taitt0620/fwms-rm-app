@@ -6,6 +6,9 @@ import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_api_client.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_repository.dart';
+import 'package:fwms_rm_app/features/purchase_order/bloc/purchase_order_bloc.dart';
+import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_api_client.dart';
+import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_repository.dart';
 import 'package:fwms_rm_app/utils/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,15 +27,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthRepository(
-        authApiClient: AuthApiClient(dio),
-        authLocalDataSource: AuthLocalDataSource(sharedPreferences),
-      ),
-      child: BlocProvider(
-        create: (context) => AuthBloc(
-          context.read<AuthRepository>(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => AuthRepository(
+            authApiClient: AuthApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
         ),
+        RepositoryProvider(
+          create: (context) => PurchaseOrderRepository(
+              purchaseOrderApiClient: PurchaseOrderApiClient(dio)),
+        ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => AuthBloc(
+              context.read<AuthRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => PurchaseOrderBloc(
+              context.read<PurchaseOrderRepository>(),
+            ),
+          ),
+        ],
         child: AppContent(),
       ),
     );

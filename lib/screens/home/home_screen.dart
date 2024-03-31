@@ -15,10 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: Padding(
-      //   padding: const EdgeInsets.all(16.0),
-      //   child: ItemScreen(),
-      // ),
       body: Column(
         children: [
           CustomAppBar(

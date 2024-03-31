@@ -79,6 +79,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 controller: _passwordController,
+                obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return AppTexts.enterPasswordTitle;
