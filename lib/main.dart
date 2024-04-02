@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fwms_rm_app/config/http_client.dart';
+import 'package:fwms_rm_app/config/client/http_client.dart';
 import 'package:fwms_rm_app/config/router/router.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_api_client.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fwms_rm_app/config/theme/app_pallete.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';

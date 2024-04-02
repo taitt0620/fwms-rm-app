@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fwms_rm_app/config/theme/app_pallete.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static _border([Color color = AppPallete.enabledBorderColorDefault]) =>

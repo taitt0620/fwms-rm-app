@@ -17,4 +17,17 @@ class AppTexts {
 
   // HomeScreen
   static const String homeTitle = "Purchase Order";
+
+  // Purchase Order Detail Screen
+  static const String purchaseOrderDetailTitle = "Purchase Order Detail";
+  static const String purchaseOrderDetailInfo = "Purchase Order Info";
+  static const String poCode = "PO Code";
+  static const String fax = "Fax";
+  static const String address = "Address";
+  static const String staff = "Staff";
+  static const String date = "Date";
+  static const String notes = "Notes";
+  static const String supplierName = "Supplier Name";
+  static const String unit = "Unit";
+  static const String totalPrice = "Total Price";
 }

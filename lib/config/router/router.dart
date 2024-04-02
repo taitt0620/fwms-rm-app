@@ -1,13 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/screens/home/home_screen.dart';
-import 'package:fwms_rm_app/screens/sign_in/login.dart';
+import 'package:fwms_rm_app/screens/purchase_order_detail/purchase_order_detail_screen.dart';
 import 'package:fwms_rm_app/screens/sign_in/login_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteName {
   static const String home = '/';
   static const String login = '/sign-in';
+  static const String request = '/request';
+  static const String requestDetail = '/request/:id';
+  static const String requestCreate = '/request/create';
+  static const String purchaseOderDetail = '/purchase-order/:id';
+  static const String qualityReport = '/quality-report';
+  static const String qualityReportDetail = '/quality-report/:id';
 
   static const publicRoutes = [
     login,
@@ -22,7 +28,7 @@ final router = GoRouter(
     if (context.read<AuthBloc>().state is AuthAuthenticatedSuccess) {
       return null;
     }
-    return RouteName.login;
+    return RouteName.purchaseOderDetail;
   },
   routes: [
     GoRoute(
@@ -33,5 +39,11 @@ final router = GoRouter(
       path: RouteName.login,
       builder: (context, state) => LoginScreen(),
     ),
+    GoRoute(
+      path: RouteName.purchaseOderDetail,
+      builder: (context, state) => PurchaseOrderDetailScreen(
+        id: state.pathParameters['id'],
+      ),
+    )
   ],
 );

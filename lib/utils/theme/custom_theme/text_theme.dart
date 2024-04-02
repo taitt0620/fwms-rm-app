@@ -36,7 +36,7 @@ class CustomTextTheme {
     ),
     bodyLarge: const TextStyle().copyWith(
       fontSize: 14.0,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
     bodyMedium: const TextStyle().copyWith(
