@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fwms_rm_app/common/widgets/rounded_container.dart';
 import 'package:fwms_rm_app/screens/purchase_order_detail/widgets/custom_row.dart';
 import 'package:fwms_rm_app/screens/purchase_order_detail/widgets/product.dart';
@@ -19,6 +17,7 @@ class PurchaseOrderInfoScreen extends StatelessWidget {
       child: Column(
         children: [
           CustomRoundedContainer(
+            width: double.infinity,
             showBorder: true,
             padding: EdgeInsets.all(16),
             child: Column(
@@ -73,6 +72,7 @@ class PurchaseOrderInfoScreen extends StatelessWidget {
           ),
           SizedBox(height: 16),
           CustomRoundedContainer(
+            width: double.infinity,
             showBorder: true,
             child: Column(
               mainAxisSize: MainAxisSize.min,

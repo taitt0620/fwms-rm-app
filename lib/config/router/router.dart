@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/screens/home/home_screen.dart';
 import 'package:fwms_rm_app/screens/purchase_order_detail/purchase_order_detail_screen.dart';
+import 'package:fwms_rm_app/screens/request/request_screen.dart';
 import 'package:fwms_rm_app/screens/sign_in/login_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +29,7 @@ final router = GoRouter(
     if (context.read<AuthBloc>().state is AuthAuthenticatedSuccess) {
       return null;
     }
-    return RouteName.purchaseOderDetail;
+    return RouteName.request;
   },
   routes: [
     GoRoute(
@@ -44,6 +45,10 @@ final router = GoRouter(
       builder: (context, state) => PurchaseOrderDetailScreen(
         id: state.pathParameters['id'],
       ),
+    ),
+    GoRoute(
+      path: RouteName.request,
+      builder: (context, state) => RequestScreen(),
     )
   ],
 );

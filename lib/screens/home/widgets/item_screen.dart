@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/config/theme/app_pallete.dart';
 import 'package:fwms_rm_app/common/widgets/rounded_container.dart';
 import 'package:fwms_rm_app/features/purchase_order/bloc/purchase_order_bloc.dart';
-import 'package:intl/intl.dart';
+import 'package:fwms_rm_app/utils/constants/image_strings.dart';
+import 'package:fwms_rm_app/utils/constants/text_strings.dart';
+import 'package:fwms_rm_app/utils/formatters/formatter.dart';
 
 class ItemScreen extends StatefulWidget {
   const ItemScreen({super.key});
@@ -33,7 +35,9 @@ class _ItemScreenState extends State<ItemScreen> {
       },
       builder: (context, state) {
         if (state is PurchaseOrderLoadingState) {
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         } else if (state is PurchaseOrderLoadedState) {
           return ListView.separated(
               shrinkWrap: true,
@@ -42,8 +46,6 @@ class _ItemScreenState extends State<ItemScreen> {
               itemBuilder: (context, index) {
                 final dateTime =
                     DateTime.parse(state.purchaseOrders[index].date.toString());
-                final formattedDate =
-                    DateFormat('dd MMMM yyyy').format(dateTime);
                 var iObj = state.purchaseOrders[index];
                 return CustomRoundedContainer(
                   showBorder: true,
@@ -54,8 +56,10 @@ class _ItemScreenState extends State<ItemScreen> {
                       Row(
                         children: [
                           //image
-                          Image.asset('assets/icons/icons8-truck-24.png',
-                              width: 24, height: 24),
+                          Image(
+                              image: AssetImage(AppImages.iconTruck),
+                              width: 24,
+                              height: 24),
                           SizedBox(width: 8),
                           //Status and Date
                           Expanded(
@@ -64,7 +68,7 @@ class _ItemScreenState extends State<ItemScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Delivery Date',
+                                  AppTexts.deliveryDate,
                                   style: TextStyle(
                                     color: AppPallete.blackColor,
                                     fontSize: 14,
@@ -72,7 +76,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                   ),
                                 ),
                                 Text(
-                                  formattedDate,
+                                  AppFormatter.formatDate(dateTime),
                                   style: TextStyle(
                                     color: AppPallete.blackColor,
                                     fontSize: 14,
@@ -84,8 +88,8 @@ class _ItemScreenState extends State<ItemScreen> {
                           ),
                           IconButton(
                             onPressed: () {},
-                            icon: Image.asset(
-                              'assets/icons/icons8-forward-24.png',
+                            icon: Image(
+                              image: AssetImage(AppImages.iconForward),
                               width: 16,
                               height: 16,
                             ),
@@ -100,8 +104,11 @@ class _ItemScreenState extends State<ItemScreen> {
                             child: Row(
                               children: [
                                 //image
-                                Image.asset('assets/icons/icons8-tag-24.png',
-                                    width: 24, height: 24),
+                                Image(
+                                  image: AssetImage(AppImages.iconTag),
+                                  width: 24,
+                                  height: 24,
+                                ),
                                 SizedBox(width: 8),
                                 //Status and Date
                                 Expanded(
@@ -111,7 +118,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Order',
+                                        AppTexts.code,
                                         style: TextStyle(
                                           color: AppPallete.blackColor,
                                           fontSize: 12,
@@ -136,8 +143,8 @@ class _ItemScreenState extends State<ItemScreen> {
                             child: Row(
                               children: [
                                 //image
-                                Image.asset(
-                                    'assets/icons/icons8-supplier-24.png',
+                                Image(
+                                    image: AssetImage(AppImages.iconSupplier),
                                     width: 24,
                                     height: 24),
                                 SizedBox(width: 8),
@@ -149,7 +156,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Supplier',
+                                        AppTexts.supplier,
                                         style: TextStyle(
                                           color: AppPallete.blackColor,
                                           fontSize: 12,

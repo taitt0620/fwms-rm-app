@@ -52,9 +52,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             actions: actions,
           ),
         ),
-        Divider(
-          color: AppColors.black.withOpacity(0.2),
-          height: 1,
+        Expanded(
+          child: Divider(
+            color: AppColors.black.withOpacity(0.2),
+            height: 1,
+          ),
         ),
       ],
     );

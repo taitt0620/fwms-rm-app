@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/text_strings.dart';
 import 'package:fwms_rm_app/utils/formatters/formatter.dart';
 
@@ -16,7 +16,7 @@ class Product extends StatelessWidget {
             border: Border.all(color: Colors.grey),
           ),
           child: Image(
-            image: AssetImage('assets/images/Image_not_available.png'),
+            image: AssetImage(AppImages.imageNotAvailable),
             width: 60,
             height: 60,
           ),

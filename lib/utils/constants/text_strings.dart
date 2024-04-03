@@ -17,10 +17,13 @@ class AppTexts {
 
   // HomeScreen
   static const String homeTitle = "Purchase Order";
+  static const String deliveryDate = "Delivery Date";
+  static const String code = "PO Code";
+  static const String supplier = "Supplier";
 
   // Purchase Order Detail Screen
   static const String purchaseOrderDetailTitle = "Purchase Order Detail";
-  static const String purchaseOrderDetailInfo = "Purchase Order Info";
+  static const String purchaseOrderDetailInfo = "Purchase Order Infomation";
   static const String poCode = "PO Code";
   static const String fax = "Fax";
   static const String address = "Address";
@@ -30,4 +33,6 @@ class AppTexts {
   static const String supplierName = "Supplier Name";
   static const String unit = "Unit";
   static const String totalPrice = "Total Price";
+
+  // Request Sreen
 }

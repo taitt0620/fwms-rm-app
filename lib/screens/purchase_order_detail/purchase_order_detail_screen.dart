@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fwms_rm_app/common/widgets/appbar.dart';
 import 'package:fwms_rm_app/screens/purchase_order_detail/widgets/purchase_order_info_screen.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
@@ -16,26 +15,28 @@ class PurchaseOrderDetailScreen extends StatefulWidget {
 class _PurchaseOrderDetailScreenState extends State<PurchaseOrderDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        CustomAppBar(
-          title: Text(
-            AppTexts.homeTitle,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall!
-                .apply(color: AppColors.black),
-          ),
-          showBackArrow: true,
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: Text(
+          AppTexts.purchaseOrderDetailTitle,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .apply(color: AppColors.black),
         ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: PurchaseOrderInfoScreen(),
+        showBackArrow: true,
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: PurchaseOrderInfoScreen(),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

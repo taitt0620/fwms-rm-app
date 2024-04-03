@@ -15,17 +15,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        title: Text(
+          AppTexts.homeTitle,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .apply(color: AppColors.black),
+        ),
+      ),
       body: Column(
         children: [
-          CustomAppBar(
-            title: Text(
-              AppTexts.homeTitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .apply(color: AppColors.black),
-            ),
-          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
