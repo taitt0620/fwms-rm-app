@@ -59,6 +59,11 @@ class CustomTextTheme {
       fontWeight: FontWeight.normal,
       color: Colors.black,
     ),
+    labelSmall: const TextStyle().copyWith(
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      color: Colors.black,
+    ),
   );
   static TextTheme darkTextTheme = TextTheme(
     headlineLarge: const TextStyle().copyWith(
@@ -112,6 +117,11 @@ class CustomTextTheme {
       color: Colors.white,
     ),
     labelMedium: const TextStyle().copyWith(
+      fontSize: 12.0,
+      fontWeight: FontWeight.normal,
+      color: Colors.white,
+    ),
+    labelSmall: const TextStyle().copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
       color: Colors.white,

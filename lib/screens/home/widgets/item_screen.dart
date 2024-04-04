@@ -88,20 +88,14 @@ class _ItemScreenState extends State<ItemScreen> {
                                 children: [
                                   Text(
                                     AppTexts.deliveryDate,
-                                    style: TextStyle(
-                                      color: AppPallete.blackColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
                                   ),
                                   Text(
                                     AppFormatter.formatDate(dateTime),
-                                    style: TextStyle(
-                                      color: AppPallete.blackColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  )
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
                                 ],
                               ),
                             ),
@@ -141,20 +135,16 @@ class _ItemScreenState extends State<ItemScreen> {
                                       children: [
                                         Text(
                                           AppTexts.code,
-                                          style: TextStyle(
-                                            color: AppPallete.blackColor,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                          ),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelLarge,
                                         ),
                                         Text(
                                           iObj.poCode,
-                                          style: TextStyle(
-                                            color: AppPallete.blackColor,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -179,20 +169,16 @@ class _ItemScreenState extends State<ItemScreen> {
                                       children: [
                                         Text(
                                           AppTexts.supplier,
-                                          style: TextStyle(
-                                            color: AppPallete.blackColor,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.normal,
-                                          ),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelLarge,
                                         ),
                                         Text(
                                           iObj.supplier,
-                                          style: TextStyle(
-                                            color: AppPallete.blackColor,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        )
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                        ),
                                       ],
                                     ),
                                   ),

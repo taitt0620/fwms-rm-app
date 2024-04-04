@@ -12,6 +12,12 @@ import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_reposito
 import 'package:fwms_rm_app/features/purchase_order_detail/bloc/purchase_order_detail_bloc.dart';
 import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_detail_api_client.dart';
 import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_detail_repository.dart';
+import 'package:fwms_rm_app/features/request/bloc/request_bloc.dart';
+import 'package:fwms_rm_app/features/request/data/request_api_client.dart';
+import 'package:fwms_rm_app/features/request/data/request_repository.dart';
+import 'package:fwms_rm_app/features/warehouse/bloc/warehouse_bloc.dart';
+import 'package:fwms_rm_app/features/warehouse/data/warehouse_api_client.dart';
+import 'package:fwms_rm_app/features/warehouse/data/warehouse_repository.dart';
 import 'package:fwms_rm_app/utils/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -43,8 +49,22 @@ class MyApp extends StatelessWidget {
               purchaseOrderApiClient: PurchaseOrderApiClient(dio)),
         ),
         RepositoryProvider(
-            create: (context) => PurchaseOrderDetailRepository(
-                apiClient: PurchaseOrderDetailApiClient(dio)))
+          create: (context) => PurchaseOrderDetailRepository(
+            apiClient: PurchaseOrderDetailApiClient(dio),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => RequestRepository(
+            requestApiClient: RequestApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => WarehouseRepository(
+            warehouseApiClient: WarehouseApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -59,8 +79,20 @@ class MyApp extends StatelessWidget {
             ),
           ),
           BlocProvider(
-              create: (context) => PurchaseOrderDetailBloc(
-                  context.read<PurchaseOrderDetailRepository>())),
+            create: (context) => PurchaseOrderDetailBloc(
+              context.read<PurchaseOrderDetailRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => RequestBloc(
+              context.read<RequestRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => WarehouseBloc(
+              context.read<WarehouseRepository>(),
+            ),
+          ),
         ],
         child: AppContent(),
       ),

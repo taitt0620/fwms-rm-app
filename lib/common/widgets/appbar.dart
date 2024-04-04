@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
