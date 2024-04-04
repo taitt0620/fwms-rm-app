@@ -21,7 +21,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _onSignInStarted(
       AuthSignInStarted event, Emitter<AuthState> emit) async {
     emit(AuthSigninInProgress());
-    await Future.delayed(Duration(seconds: 1));
     final result = await authRepository.signIn(
         username: event.username, password: event.password);
     return (switch (result) {

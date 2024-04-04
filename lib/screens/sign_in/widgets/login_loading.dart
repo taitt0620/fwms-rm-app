@@ -5,8 +5,13 @@ class LoginLoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CircularProgressIndicator(),
+    return AlertDialog(
+      content: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(),
+        ],
+      ),
     );
   }
 }

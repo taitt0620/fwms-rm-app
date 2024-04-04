@@ -9,10 +9,11 @@ class PurchaseOrderApiClient {
   Future<List<PurchaseOrderResponseDto>> fetchPurchaseOrders() async {
     try {
       Response response = await dio.get('/purchase-order');
-      // Access the 'pagingData' array
-      List<dynamic> purchaseOrdersData = response.data['data']['pagingData'];
 
-      // Map over the purchase orders and parse using your model
+      // Assuming API response format like this:
+      Map<String, dynamic> responseData = response.data;
+      List<dynamic> purchaseOrdersData = responseData['data']['pagingData'];
+
       return purchaseOrdersData
           .map((e) => PurchaseOrderResponseDto.fromJson(e))
           .toList();

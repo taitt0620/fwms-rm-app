@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/screens/home/home_screen.dart';
@@ -12,7 +13,7 @@ class RouteName {
   static const String request = '/request';
   static const String requestDetail = '/request/:id';
   static const String requestCreate = '/request/create';
-  static const String purchaseOderDetail = '/purchase-order/:id';
+  static const String purchaseOderDetail = '/purchase-order-detail/:id';
   static const String qualityReport = '/quality-report';
   static const String qualityReportDetail = '/quality-report/:id';
 
@@ -29,7 +30,7 @@ final router = GoRouter(
     if (context.read<AuthBloc>().state is AuthAuthenticatedSuccess) {
       return null;
     }
-    return RouteName.request;
+    return RouteName.login;
   },
   routes: [
     GoRoute(
@@ -42,9 +43,15 @@ final router = GoRouter(
     ),
     GoRoute(
       path: RouteName.purchaseOderDetail,
-      builder: (context, state) => PurchaseOrderDetailScreen(
-        id: state.pathParameters['id'],
-      ),
+      name: 'purchase-order-detail',
+      builder: (context, state) {
+        final id = state.pathParameters['id'];
+        if (id == null) {
+          // Handle the case where id is not present in the route.
+          return Container();
+        }
+        return PurchaseOrderDetailScreen(id: id);
+      },
     ),
     GoRoute(
       path: RouteName.request,

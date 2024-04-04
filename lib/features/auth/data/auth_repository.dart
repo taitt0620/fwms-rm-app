@@ -21,10 +21,16 @@ class AuthRepository {
     try {
       final signInSuccessDto = await authApiClient
           .signIn(SignInDto(username: username, password: password));
-      await authLocalDataSource.saveToken(signInSuccessDto.data.tokenString);
+
+      // ignore: unnecessary_null_comparison
+      if (signInSuccessDto.data.tokenString != null) {
+        await authLocalDataSource.saveToken(signInSuccessDto.data.tokenString);
+      } else {
+        throw SignInException('Token string is null');
+      }
     } catch (e) {
-      log('$e');
-      return Failure('$e');
+      log('Sign in error: $e');
+      return Failure('Sign in error: $e');
     }
     return Success(null);
   }
@@ -33,22 +39,28 @@ class AuthRepository {
     try {
       final token = await authLocalDataSource.getToken();
       if (token == null) {
-        log('$token');
-        return Failure('Token is null');
+        log('Token retrieval error: Token is null');
+        return Failure('Token retrieval error: Token is null');
       }
       return Success(token);
+    } catch (e) {
+      log('Token retrieval error: $e');
+      return Failure('Token retrieval error: $e');
+    }
+  }
+
+  Future<Result<void>> signOut() async {
+    try {
+      await authLocalDataSource.deleteToken();
     } catch (e) {
       log('$e');
       return Failure('$e');
     }
+    return Success(null);
   }
-  // Future<Result<void>> signOut() async {
-  //   try {
-  //     await authLocalDataSource.deleteToken();
-  //   } catch (e) {
-  //     log('$e');
-  //     return Failure('$e');
-  //   }
-  //   return Success(null);
-  // }
+}
+
+class SignInException implements Exception {
+  final String message;
+  SignInException(this.message);
 }

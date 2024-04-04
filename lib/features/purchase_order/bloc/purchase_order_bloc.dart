@@ -13,6 +13,7 @@ class PurchaseOrderBloc extends Bloc<PurchaseOrderEvent, PurchaseOrderState> {
     on<PurchaseOrderEvent>(
       (event, emit) async {
         try {
+          await Future.delayed(Duration(seconds: 1));
           emit(PurchaseOrderLoadingState());
           var data = await purchaseOrderRepository.fetchPurchaseOrders();
           emit(PurchaseOrderLoadedState(data));

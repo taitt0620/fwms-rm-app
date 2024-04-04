@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -11,6 +12,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.leadingOnPressed,
     this.showBackArrow = false,
+    this.onBackArrowPressed,
+    this.bottom,
   });
 
   final Widget? title;
@@ -18,6 +21,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Image? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
+  final VoidCallback? onBackArrowPressed;
+  final PreferredSizeWidget? bottom;
 
   static double getAppBarHeight() {
     return kToolbarHeight;
@@ -33,9 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             automaticallyImplyLeading: false,
             leading: showBackArrow
                 ? IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed: onBackArrowPressed,
                     icon: Image(
                       image: AssetImage(AppImages.iconBack),
                       height: 24,
@@ -50,14 +53,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     : null,
             title: title,
             actions: actions,
+            bottom: bottom,
           ),
         ),
-        Expanded(
-          child: Divider(
-            color: AppColors.black.withOpacity(0.2),
-            height: 1,
-          ),
-        ),
+        // Expanded(
+        //   child: Divider(
+        //     color: AppColors.black.withOpacity(0.2),
+        //     height: 1,
+        //   ),
+        // ),
       ],
     );
   }

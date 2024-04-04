@@ -16,7 +16,7 @@ class AppTexts {
   static const String retryButtonTitle = "Retry";
 
   // HomeScreen
-  static const String homeTitle = "Purchase Order";
+  static const String homeTitle = "Home";
   static const String deliveryDate = "Delivery Date";
   static const String code = "PO Code";
   static const String supplier = "Supplier";

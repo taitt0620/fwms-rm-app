@@ -9,6 +9,9 @@ import 'package:fwms_rm_app/features/auth/data/auth_repository.dart';
 import 'package:fwms_rm_app/features/purchase_order/bloc/purchase_order_bloc.dart';
 import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_api_client.dart';
 import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_repository.dart';
+import 'package:fwms_rm_app/features/purchase_order_detail/bloc/purchase_order_detail_bloc.dart';
+import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_detail_api_client.dart';
+import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_detail_repository.dart';
 import 'package:fwms_rm_app/utils/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,6 +42,9 @@ class MyApp extends StatelessWidget {
           create: (context) => PurchaseOrderRepository(
               purchaseOrderApiClient: PurchaseOrderApiClient(dio)),
         ),
+        RepositoryProvider(
+            create: (context) => PurchaseOrderDetailRepository(
+                apiClient: PurchaseOrderDetailApiClient(dio)))
       ],
       child: MultiBlocProvider(
         providers: [
@@ -52,6 +58,9 @@ class MyApp extends StatelessWidget {
               context.read<PurchaseOrderRepository>(),
             ),
           ),
+          BlocProvider(
+              create: (context) => PurchaseOrderDetailBloc(
+                  context.read<PurchaseOrderDetailRepository>())),
         ],
         child: AppContent(),
       ),
