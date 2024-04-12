@@ -1,9 +1,9 @@
 import 'dart:developer';
-
 import 'package:fwms_rm_app/features/auth/data/auth_api_client.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/auth/dtos/sign_in_dto.dart';
 import 'package:fwms_rm_app/features/result_type.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class AuthRepository {
   final AuthApiClient authApiClient;
@@ -22,15 +22,24 @@ class AuthRepository {
       final signInSuccessDto = await authApiClient
           .signIn(SignInDto(username: username, password: password));
 
-      // ignore: unnecessary_null_comparison
-      if (signInSuccessDto.data.tokenString != null) {
+      if (signInSuccessDto.data != null) {
         await authLocalDataSource.saveToken(signInSuccessDto.data.tokenString);
+
+        log('User details: id=${signInSuccessDto.data.id}, name=${signInSuccessDto.data.name}, role=${signInSuccessDto.data.role}');
+        await authLocalDataSource.saveUser(signInSuccessDto.data.id,
+            signInSuccessDto.data.name, signInSuccessDto.data.role);
+        log('Expires in: ${signInSuccessDto.data.expiresInMilliseconds}');
+        await authLocalDataSource.saveTokenExpirationTime(
+            signInSuccessDto.data.expiresInMilliseconds);
       } else {
-        throw SignInException('Token string is null');
+        throw SignInException('Failed to sign in: Token string is null');
       }
+    } on SignInException catch (e) {
+      log('Sign in error: ${e.message}');
+      return Failure('Sign in error: ${e.message}');
     } catch (e) {
-      log('Sign in error: $e');
-      return Failure('Sign in error: $e');
+      log('Unexpected error: $e');
+      return Failure('Unexpected error: $e');
     }
     return Success(null);
   }
@@ -42,7 +51,14 @@ class AuthRepository {
         log('Token retrieval error: Token is null');
         return Failure('Token retrieval error: Token is null');
       }
-      return Success(token);
+
+      if (JwtDecoder.isExpired(token)) {
+        log('Token has expired');
+        return Failure('Token has expired');
+      } else {
+        log('Token is still valid');
+        return Success(token);
+      }
     } catch (e) {
       log('Token retrieval error: $e');
       return Failure('Token retrieval error: $e');

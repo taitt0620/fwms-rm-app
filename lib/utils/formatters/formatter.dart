@@ -12,4 +12,13 @@ class AppFormatter {
         RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
     return parts.join(',');
   }
+
+  static String formatStatus(String status) {
+    if (status == 'NotDeliveredEnough') {
+      return status.replaceAll(
+          'NotDeliveredEnough', 'Not Delivered Enough'); // or use split
+    } else {
+      return status;
+    }
+  }
 }

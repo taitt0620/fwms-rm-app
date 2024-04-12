@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fwms_rm_app/screens/home/widgets/item_screen.dart';
+import 'package:fwms_rm_app/screens/purchase_order/purchase_order_screen.dart';
 import 'package:fwms_rm_app/screens/request/request_screen.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen>
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(AppSizes.md),
-                  child: ItemScreen(),
+                  child: PurchaseOrderScreen(),
                 ),
               ),
             ],

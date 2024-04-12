@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fwms_rm_app/features/request/dtos/request_create_dto.dart';
 import 'package:fwms_rm_app/features/request/dtos/request_dto.dart';
 
 class RequestApiClient {
@@ -32,6 +33,42 @@ class RequestApiClient {
           List<Map<String, dynamic>>.from(response.data!['data']['pagingData']);
 
       return requestsData.map((e) => RequestDto.fromJson(e)).toList();
+    } on DioException catch (e) {
+      if (e.response != null) {
+        throw DioException(
+          requestOptions: e.requestOptions,
+          error: e.response!.data['message'],
+        );
+      } else {
+        throw DioException(
+          requestOptions: e.requestOptions,
+          error: e.message,
+        );
+      }
+    }
+  }
+
+  Future<RequestCreateDto> createRequest(
+      String token, RequestCreateDto request) async {
+    try {
+      Response<Map<String, dynamic>> response = await dio.post(
+        '/request',
+        data: request.toJson(),
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+        ),
+      );
+
+      if (response.data == null || response.data!['data'] == null) {
+        throw DioException(
+          requestOptions: RequestOptions(path: '/request'),
+          error: 'Invalid response data',
+        );
+      }
+
+      return RequestCreateDto.fromJson(response.data!['data']);
     } on DioException catch (e) {
       if (e.response != null) {
         throw DioException(

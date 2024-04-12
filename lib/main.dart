@@ -6,6 +6,7 @@ import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_api_client.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_repository.dart';
+import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_bloc.dart';
 import 'package:fwms_rm_app/features/purchase_order/bloc/purchase_order_bloc.dart';
 import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_api_client.dart';
 import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_repository.dart';
@@ -72,6 +73,9 @@ class MyApp extends StatelessWidget {
             create: (context) => AuthBloc(
               context.read<AuthRepository>(),
             ),
+          ),
+          BlocProvider(
+            create: (context) => BottomNavBarBloc(),
           ),
           BlocProvider(
             create: (context) => PurchaseOrderBloc(

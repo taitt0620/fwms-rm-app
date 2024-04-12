@@ -12,3 +12,5 @@ class AuthSignInStarted extends AuthEvent {
 }
 
 class AuthAuthenticatedStarted extends AuthEvent {}
+
+class CheckTokenExpiration extends AuthEvent {}

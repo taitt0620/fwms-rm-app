@@ -13,4 +13,18 @@ class AppImages {
   static const String iconTag = 'assets/icons/icons8-tag-24.png';
   static const String iconInvisible = 'assets/icons/icons8-invisible-24.png';
   static const String iconTruck = 'assets/icons/icons8-truck-24.png';
+  static const String iconHome = 'assets/icons/icons8-home-24.png';
+  static const String iconHomeOutline =
+      'assets/icons/icons8-home-outline-24.png';
+  static const String iconPerson = 'assets/icons/icons8-person-24.png';
+  static const String iconPersonOutline =
+      'assets/icons/icons8-person-outline-24.png';
+  static const String iconProduct = 'assets/icons/icons8-product-24.png';
+  static const String iconProductOutline =
+      'assets/icons/icons8-product-outline-24.png';
+  static const String iconSearch = 'assets/icons/icons8-search-24.png';
+  static const String iconSearchOutline =
+      'assets/icons/icons8-search-outline-24.png';
+  static const String iconQrCodeOutline =
+      'assets/icons/icons8-qr-code-outline-24.png';
 }

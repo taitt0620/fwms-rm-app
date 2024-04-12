@@ -11,34 +11,40 @@ String purchaseOrderResponseDtoToJson(PurchaseOrderResponseDto data) =>
     json.encode(data.toJson());
 
 class PurchaseOrderResponseDto {
-  final String uri;
-  final String poCode;
-  final String supplier;
-  final DateTime date;
-  final String address;
-  final String fax;
-  final String notes;
-  final int totalPrice;
-  final String userId;
-  final String id;
-  final DateTime dateCreate;
-  final DateTime dateUpdate;
-  final bool isDeleted;
+  String? uri;
+  String? poCode;
+  String? supplier;
+  String? licensePlate;
+  DateTime? date;
+  int? totalPhase;
+  String? address;
+  String? fax;
+  String? notes;
+  int? totalPrice;
+  String? status;
+  String? userId;
+  String? id;
+  DateTime? dateCreate;
+  DateTime? dateUpdate;
+  bool? isDeleted;
 
   PurchaseOrderResponseDto({
-    required this.uri,
-    required this.poCode,
-    required this.supplier,
-    required this.date,
-    required this.address,
-    required this.fax,
-    required this.notes,
-    required this.totalPrice,
-    required this.userId,
-    required this.id,
-    required this.dateCreate,
-    required this.dateUpdate,
-    required this.isDeleted,
+    this.uri,
+    this.poCode,
+    this.supplier,
+    this.licensePlate,
+    this.date,
+    this.totalPhase,
+    this.address,
+    this.fax,
+    this.notes,
+    this.totalPrice,
+    this.status,
+    this.userId,
+    this.id,
+    this.dateCreate,
+    this.dateUpdate,
+    this.isDeleted,
   });
 
   factory PurchaseOrderResponseDto.fromJson(Map<String, dynamic> json) =>
@@ -46,15 +52,22 @@ class PurchaseOrderResponseDto {
         uri: json["uri"],
         poCode: json["poCode"],
         supplier: json["supplier"],
-        date: DateTime.parse(json["date"]),
+        licensePlate: json["licensePlate"],
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        totalPhase: json["totalPhase"],
         address: json["address"],
         fax: json["fax"],
         notes: json["notes"],
         totalPrice: json["totalPrice"],
+        status: json["status"],
         userId: json["userId"],
         id: json["id"],
-        dateCreate: DateTime.parse(json["dateCreate"]),
-        dateUpdate: DateTime.parse(json["dateUpdate"]),
+        dateCreate: json["dateCreate"] == null
+            ? null
+            : DateTime.parse(json["dateCreate"]),
+        dateUpdate: json["dateUpdate"] == null
+            ? null
+            : DateTime.parse(json["dateUpdate"]),
         isDeleted: json["isDeleted"],
       );
 
@@ -62,15 +75,18 @@ class PurchaseOrderResponseDto {
         "uri": uri,
         "poCode": poCode,
         "supplier": supplier,
-        "date": date.toIso8601String(),
+        "licensePlate": licensePlate,
+        "date": date?.toIso8601String(),
+        "totalPhase": totalPhase,
         "address": address,
         "fax": fax,
         "notes": notes,
         "totalPrice": totalPrice,
+        "status": status,
         "userId": userId,
         "id": id,
-        "dateCreate": dateCreate.toIso8601String(),
-        "dateUpdate": dateUpdate.toIso8601String(),
+        "dateCreate": dateCreate?.toIso8601String(),
+        "dateUpdate": dateUpdate?.toIso8601String(),
         "isDeleted": isDeleted,
       };
 }

@@ -40,7 +40,10 @@ class _LoginScreenState extends State<LoginScreen> {
               context.read<AuthBloc>().add(AuthAuthenticatedStarted());
               break;
             case AuthAuthenticatedSuccess():
-              context.go(RouteName.home);
+              context.go(RouteName.bottomNavBar);
+              break;
+            case AuthAuthenticatedFailure():
+              context.go(RouteName.login);
               break;
             default:
           }

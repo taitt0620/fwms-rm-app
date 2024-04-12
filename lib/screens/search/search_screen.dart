@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class SettingScreen extends StatefulWidget {
-  const SettingScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
 
   @override
-  State<SettingScreen> createState() => _SettingScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SettingScreenState extends State<SettingScreen> {
+class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Text(
-          'Setting Screen',
+          'Search Screen',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),

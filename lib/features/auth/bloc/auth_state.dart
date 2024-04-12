@@ -25,3 +25,5 @@ class AuthAuthenticatedFailure extends AuthState {
 
   AuthAuthenticatedFailure(this.message);
 }
+
+class TokenExpired extends AuthState {}

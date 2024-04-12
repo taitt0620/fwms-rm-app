@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fwms_rm_app/config/theme/app_pallete.dart';
 import 'package:fwms_rm_app/common/widgets/rounded_container.dart';
 import 'package:fwms_rm_app/features/purchase_order/bloc/purchase_order_bloc.dart';
+import 'package:fwms_rm_app/screens/purchase_order/widgets/loading_container.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
 import 'package:fwms_rm_app/utils/constants/text_strings.dart';
@@ -10,18 +10,17 @@ import 'package:fwms_rm_app/utils/formatters/formatter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ItemScreen extends StatefulWidget {
-  const ItemScreen({super.key});
+class PurchaseOrderScreen extends StatefulWidget {
+  const PurchaseOrderScreen({super.key});
 
   @override
-  State<ItemScreen> createState() => _ItemScreenState();
+  State<PurchaseOrderScreen> createState() => _PurchaseOrderScreenState();
 }
 
-class _ItemScreenState extends State<ItemScreen> {
+class _PurchaseOrderScreenState extends State<PurchaseOrderScreen> {
   @override
   void initState() {
     context.read<PurchaseOrderBloc>().add(PurchaseOrderEvent());
-
     super.initState();
   }
 
@@ -64,7 +63,7 @@ class _ItemScreenState extends State<ItemScreen> {
                 return InkWell(
                   onTap: () {
                     context.goNamed('purchase-order-detail',
-                        pathParameters: {'id': iObj.id});
+                        pathParameters: {'id': iObj.id!});
                   },
                   child: CustomRoundedContainer(
                     showBorder: true,
@@ -80,6 +79,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                 width: 24,
                                 height: 24),
                             SizedBox(width: 8),
+
                             //Status and Date
                             Expanded(
                               child: Column(
@@ -87,9 +87,21 @@ class _ItemScreenState extends State<ItemScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    AppTexts.deliveryDate,
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge,
+                                    AppFormatter.formatStatus(iObj.status!),
+                                    style: (Theme.of(context)
+                                                .textTheme
+                                                .titleLarge ??
+                                            TextStyle())
+                                        .copyWith(
+                                      color:
+                                          iObj.status! == 'NotDeliveredEnough'
+                                              ? Colors.blue
+                                              : iObj.status! == 'InProgress'
+                                                  ? Colors.yellow
+                                                  : iObj.status! == 'Done'
+                                                      ? Colors.green
+                                                      : Colors.black,
+                                    ),
                                   ),
                                   Text(
                                     AppFormatter.formatDate(dateTime),
@@ -102,7 +114,7 @@ class _ItemScreenState extends State<ItemScreen> {
                             IconButton(
                               onPressed: () {
                                 context.goNamed('purchase-order-detail',
-                                    pathParameters: {'id': iObj.id});
+                                    pathParameters: {'id': iObj.id!});
                               },
                               icon: Image(
                                 image: AssetImage(AppImages.iconForward),
@@ -140,7 +152,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                               .labelLarge,
                                         ),
                                         Text(
-                                          iObj.poCode,
+                                          iObj.poCode!,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge,
@@ -174,7 +186,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                               .labelLarge,
                                         ),
                                         Text(
-                                          iObj.supplier,
+                                          iObj.supplier!,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge,
@@ -197,149 +209,6 @@ class _ItemScreenState extends State<ItemScreen> {
         }
         return Container();
       },
-    );
-  }
-}
-
-class LoadingItem extends StatelessWidget {
-  const LoadingItem({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomRoundedContainer(
-      showBorder: true,
-      padding: EdgeInsets.all(AppSizes.md),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              //image
-              Image(
-                  image: AssetImage(AppImages.iconTruck),
-                  width: 24,
-                  height: 24),
-              SizedBox(width: 8),
-              //Status and Date
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppTexts.deliveryDate,
-                      style: TextStyle(
-                        color: AppPallete.blackColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      'unknown',
-                      style: TextStyle(
-                        color: AppPallete.blackColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Image(
-                  image: AssetImage(AppImages.iconForward),
-                  width: AppSizes.md,
-                  height: AppSizes.md,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: AppSizes.md),
-          // Row 2
-          Row(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    //image
-                    Image(
-                      image: AssetImage(AppImages.iconTag),
-                      width: 24,
-                      height: 24,
-                    ),
-                    SizedBox(width: 8),
-                    //Status and Date
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppTexts.code,
-                            style: TextStyle(
-                              color: AppPallete.blackColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          Text(
-                            'unknown',
-                            style: TextStyle(
-                              color: AppPallete.blackColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    //image
-                    Image(
-                        image: AssetImage(AppImages.iconSupplier),
-                        width: 24,
-                        height: 24),
-                    SizedBox(width: 8),
-                    //Supplier
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppTexts.supplier,
-                            style: TextStyle(
-                              color: AppPallete.blackColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                          Text(
-                            'unknown',
-                            style: TextStyle(
-                              color: AppPallete.blackColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }
