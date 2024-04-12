@@ -31,13 +31,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSizes.md),
+          padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
           child: AppBar(
             automaticallyImplyLeading: false,
             leading: showBackArrow
                 ? IconButton(
                     onPressed: onBackArrowPressed,
-                    icon: Image(
+                    icon: const Image(
                       image: AssetImage(AppImages.iconBack),
                       height: 24,
                       width: 24,

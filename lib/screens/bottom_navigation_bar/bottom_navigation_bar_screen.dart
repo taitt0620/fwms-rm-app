@@ -4,6 +4,7 @@ import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_b
 import 'package:fwms_rm_app/screens/bottom_navigation_bar/screens.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
+import 'package:go_router/go_router.dart';
 
 List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
   const BottomNavigationBarItem(
@@ -108,7 +109,7 @@ List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
 ];
 
 List<Widget> bottomNavScreens = const <Widget>[
-  HomeScreen(),
+  HomeScreenTestedScreen(),
   SearchScreen(),
   QrCodeMobileScannerScreen(),
   CategoryScreen(),
@@ -126,12 +127,7 @@ class BottomNavigationBarScreen extends StatelessWidget {
         void onItemTapped(int index) {
           if (index == 2) {
             // If the QR Code item is tapped
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      QrCodeMobileScannerScreen()), // Replace with your screen
-            );
+            context.goNamed('/qr-code');
           } else {
             BlocProvider.of<BottomNavBarBloc>(context)
                 .add(TabChanged(tabIndex: index));
@@ -140,19 +136,22 @@ class BottomNavigationBarScreen extends StatelessWidget {
 
         return Scaffold(
           body: bottomNavScreens.elementAt(state.tabIndex),
-          bottomNavigationBar: BottomNavigationBar(
-            items: bottomNavItems,
-            currentIndex: state.tabIndex,
-            selectedItemColor: AppColors.primary,
-            unselectedItemColor: AppColors.black,
-            showUnselectedLabels: false,
-            selectedFontSize: 14,
-            unselectedFontSize: 12,
-            elevation: 3,
-            type: BottomNavigationBarType.fixed,
-            onTap: (index) {
-              onItemTapped(index);
-            },
+          bottomNavigationBar: SizedBox(
+            height: 90,
+            child: BottomNavigationBar(
+              items: bottomNavItems,
+              currentIndex: state.tabIndex,
+              selectedItemColor: AppColors.primary,
+              unselectedItemColor: AppColors.black,
+              showUnselectedLabels: false,
+              selectedFontSize: 14,
+              unselectedFontSize: 12,
+              elevation: 3,
+              type: BottomNavigationBarType.fixed,
+              onTap: (index) {
+                onItemTapped(index);
+              },
+            ),
           ),
           // floatingActionButtonLocation:
           //     FloatingActionButtonLocation.centerDocked,

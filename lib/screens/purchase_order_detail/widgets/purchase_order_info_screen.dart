@@ -205,13 +205,6 @@ class _PurchaseOrderInfoScreenState extends State<PurchaseOrderInfoScreen> {
                   ),
                 ),
                 SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Xác nhận'),
-                  ),
-                ),
               ],
             ),
           );

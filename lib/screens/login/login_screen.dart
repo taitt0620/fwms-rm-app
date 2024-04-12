@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/common/styles/spacing_styles.dart';
 import 'package:fwms_rm_app/config/router/router.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
-import 'package:fwms_rm_app/screens/sign_in/widgets/login_failure.dart';
-import 'package:fwms_rm_app/screens/sign_in/widgets/login_form.dart';
-import 'package:fwms_rm_app/screens/sign_in/widgets/login_header.dart';
-import 'package:fwms_rm_app/screens/sign_in/widgets/login_loading.dart';
+import 'package:fwms_rm_app/screens/login/widgets/login_failure.dart';
+import 'package:fwms_rm_app/screens/login/widgets/login_form.dart';
+import 'package:fwms_rm_app/screens/login/widgets/login_header.dart';
+import 'package:fwms_rm_app/screens/login/widgets/login_loading.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {

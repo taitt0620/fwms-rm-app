@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fwms_rm_app/common/widgets/appbar.dart';
 import 'package:fwms_rm_app/screens/purchase_order/purchase_order_screen.dart';
 import 'package:fwms_rm_app/screens/request/request_screen.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
+import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
 import 'package:fwms_rm_app/utils/constants/text_strings.dart';
 
@@ -32,13 +34,35 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          AppTexts.homeTitle,
-          style: Theme.of(context)
-              .textTheme
-              .headlineSmall!
-              .apply(color: AppColors.black),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Good day for working',
+              style: Theme.of(context)
+                  .textTheme
+                  .labelMedium!
+                  .apply(color: AppColors.black),
+            ),
+            Text(
+              AppTexts.homeTitle,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge!
+                  .apply(color: AppColors.black),
+            ),
+          ],
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Image(
+              image: AssetImage(AppImages.iconBell),
+              width: 24,
+              height: 24,
+            ),
+          ),
+        ],
         bottom: TabBar(
           indicatorColor: AppColors.primary,
           labelColor: AppColors.primary,

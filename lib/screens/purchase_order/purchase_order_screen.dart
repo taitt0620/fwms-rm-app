@@ -88,20 +88,19 @@ class _PurchaseOrderScreenState extends State<PurchaseOrderScreen> {
                                 children: [
                                   Text(
                                     AppFormatter.formatStatus(iObj.status!),
-                                    style: (Theme.of(context)
-                                                .textTheme
-                                                .titleLarge ??
-                                            TextStyle())
-                                        .copyWith(
-                                      color:
-                                          iObj.status! == 'NotDeliveredEnough'
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .apply(
+                                          color: iObj.status! ==
+                                                  'NotDeliveredEnough'
                                               ? Colors.blue
                                               : iObj.status! == 'InProgress'
                                                   ? Colors.yellow
                                                   : iObj.status! == 'Done'
                                                       ? Colors.green
                                                       : Colors.black,
-                                    ),
+                                        ),
                                   ),
                                   Text(
                                     AppFormatter.formatDate(dateTime),

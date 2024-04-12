@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_bloc.dart';
 import 'package:fwms_rm_app/screens/bottom_navigation_bar/bottom_navigation_bar_screen.dart';
+import 'package:fwms_rm_app/screens/bottom_navigation_bar/screens.dart';
 import 'package:fwms_rm_app/screens/home/home_screen.dart';
+import 'package:fwms_rm_app/screens/home/home_screen_tested.dart';
 import 'package:fwms_rm_app/screens/purchase_order_detail/purchase_order_detail_screen.dart';
 import 'package:fwms_rm_app/screens/request/request_screen.dart';
-import 'package:fwms_rm_app/screens/sign_in/login_screen.dart';
+import 'package:fwms_rm_app/screens/login/login_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteName {
@@ -15,6 +17,7 @@ class RouteName {
   static const String login = '/sign-in';
   static const String request = '/request';
   static const String requestDetail = '/request/:id';
+  static const String qrCode = '/qr-code';
   static const String requestCreate = '/request/create';
   static const String purchaseOderDetail = '/purchase-order-detail/:id';
   static const String qualityReport = '/quality-report';
@@ -47,7 +50,7 @@ final router = GoRouter(
     GoRoute(
       path: RouteName.home,
       name: 'home',
-      builder: (context, state) => HomeScreen(),
+      builder: (context, state) => HomeScreenTestedScreen(),
     ),
     GoRoute(
       path: RouteName.login,
@@ -68,6 +71,11 @@ final router = GoRouter(
     GoRoute(
       path: RouteName.request,
       builder: (context, state) => RequestScreen(),
-    )
+    ),
+    GoRoute(
+      path: RouteName.qrCode,
+      name: 'qrr-code',
+      builder: (context, state) => QrCodeMobileScannerScreen(),
+    ),
   ],
 );

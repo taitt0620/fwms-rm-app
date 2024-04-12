@@ -47,16 +47,15 @@ class _SingleRequestState extends State<SingleRequest> {
               children: [
                 Text(
                   widget.request.status ?? 'No status',
-                  style: (Theme.of(context).textTheme.titleLarge ?? TextStyle())
-                      .copyWith(
-                    color: widget.request.status == 'Pending'
-                        ? Colors.blue
-                        : widget.request.status == 'InProgress'
-                            ? Colors.yellow
-                            : widget.request.status == 'Done'
-                                ? Colors.green
-                                : Colors.black,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge!.apply(
+                        color: widget.request.status == 'Pending'
+                            ? Colors.blue
+                            : widget.request.status == 'InProgress'
+                                ? Colors.yellow
+                                : widget.request.status == 'Done'
+                                    ? Colors.green
+                                    : Colors.black,
+                      ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

@@ -27,4 +27,7 @@ class AppImages {
       'assets/icons/icons8-search-outline-24.png';
   static const String iconQrCodeOutline =
       'assets/icons/icons8-qr-code-outline-24.png';
+  static const String iconBell = 'assets/icons/icons8-bell-24.png';
+  static const String iconEdit = 'assets/icons/icons8-edit-24.png';
+  static const String iconClose = 'assets/icons/icons8-close-window-24.png';
 }
