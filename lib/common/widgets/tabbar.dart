@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 
 class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomTabBar({super.key, required this.tabs});
+  const CustomTabBar(
+      {super.key,
+      required this.tabs,
+      required this.isScrollable,
+      required this.tabAlignment});
 
   final List<Widget> tabs;
+  final bool isScrollable;
+  final TabAlignment tabAlignment;
   static double getAppBarHeight() {
     return kToolbarHeight;
   }
@@ -15,10 +21,12 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
         color: AppColors.white,
         child: TabBar(
           tabs: tabs,
-          isScrollable: true,
+          isScrollable: isScrollable,
+          tabAlignment: tabAlignment,
           indicatorColor: AppColors.primary,
           labelColor: AppColors.primary,
-          unselectedLabelColor: AppColors.darkGrey,
+          unselectedLabelColor: AppColors.black,
+          labelStyle: Theme.of(context).textTheme.bodyMedium,
         ));
   }
 

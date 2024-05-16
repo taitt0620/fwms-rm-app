@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
+import 'package:fwms_rm_app/utils/helpers/app_helper.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -12,6 +13,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackArrow = false,
     this.onBackArrowPressed,
     this.bottom,
+    this.elevation,
+    this.backgroundColor,
   });
 
   final Widget? title;
@@ -21,10 +24,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   final VoidCallback? onBackArrowPressed;
   final PreferredSizeWidget? bottom;
-
-  static double getAppBarHeight() {
-    return kToolbarHeight;
-  }
+  final double? elevation;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
           child: AppBar(
+            elevation: elevation ?? 0,
+            backgroundColor: backgroundColor,
             automaticallyImplyLeading: false,
             leading: showBackArrow
                 ? IconButton(
@@ -54,16 +57,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             bottom: bottom,
           ),
         ),
-        // Expanded(
-        //   child: Divider(
-        //     color: AppColors.black.withOpacity(0.2),
-        //     height: 1,
-        //   ),
-        // ),
       ],
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(getAppBarHeight());
+  Size get preferredSize => Size.fromHeight(AppHelper.getAppBarHeight());
 }

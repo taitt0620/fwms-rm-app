@@ -22,19 +22,15 @@ class AuthRepository {
       final signInSuccessDto = await authApiClient
           .signIn(SignInDto(username: username, password: password));
 
-      if (signInSuccessDto.data != null) {
-        await authLocalDataSource.saveToken(signInSuccessDto.data.tokenString);
+      await authLocalDataSource.saveToken(signInSuccessDto.data.tokenString);
 
-        log('User details: id=${signInSuccessDto.data.id}, name=${signInSuccessDto.data.name}, role=${signInSuccessDto.data.role}');
-        await authLocalDataSource.saveUser(signInSuccessDto.data.id,
-            signInSuccessDto.data.name, signInSuccessDto.data.role);
-        log('Expires in: ${signInSuccessDto.data.expiresInMilliseconds}');
-        await authLocalDataSource.saveTokenExpirationTime(
-            signInSuccessDto.data.expiresInMilliseconds);
-      } else {
-        throw SignInException('Failed to sign in: Token string is null');
-      }
-    } on SignInException catch (e) {
+      log('User details: id=${signInSuccessDto.data.id}, name=${signInSuccessDto.data.name}, role=${signInSuccessDto.data.role}');
+      await authLocalDataSource.saveUser(signInSuccessDto.data.id,
+          signInSuccessDto.data.name, signInSuccessDto.data.role);
+      log('Expires in: ${signInSuccessDto.data.expiresInMilliseconds}');
+      await authLocalDataSource.saveTokenExpirationTime(
+          signInSuccessDto.data.expiresInMilliseconds);
+        } on SignInException catch (e) {
       log('Sign in error: ${e.message}');
       return Failure('Sign in error: ${e.message}');
     } catch (e) {

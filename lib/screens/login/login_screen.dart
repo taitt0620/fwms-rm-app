@@ -22,15 +22,12 @@ class _LoginScreenState extends State<LoginScreen> {
     final authState = context.watch<AuthBloc>().state;
 
     var loginWidget = (switch (authState) {
-      AuthInitial() => LoginForm(),
-      AuthSigninInProgress() => LoginLoadingScreen(),
+      AuthInitial() => const LoginForm(),
+      AuthAuthenticateUnauthenticated() => const LoginForm(),
+      AuthSigninInProgress() => const LoginLoadingScreen(),
       AuthSigninFailure() => LoginFailureScreen(message: authState.message),
-      AuthSigninSuccess() => Container(
-          child: Center(
-            child: Text('2'),
-          ),
-        ),
-      _ => LoginForm(),
+      AuthSigninSuccess() => Container(),
+      _ => const LoginForm(),
     });
 
     loginWidget = BlocListener<AuthBloc, AuthState>(
@@ -39,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
             case AuthSigninSuccess():
               context.read<AuthBloc>().add(AuthAuthenticatedStarted());
               break;
-            case AuthAuthenticatedSuccess():
+            case AuthAuthenticateSuccess():
               context.go(RouteName.bottomNavBar);
               break;
             case AuthAuthenticatedFailure():
@@ -51,12 +48,13 @@ class _LoginScreenState extends State<LoginScreen> {
         child: loginWidget);
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Padding(
           padding: CustomSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             children: [
               //Logo, Title and Slogan
-              loginHeader(),
+              const loginHeader(),
 
               //Form
               loginWidget

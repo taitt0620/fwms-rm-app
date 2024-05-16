@@ -1,13 +1,17 @@
 part of 'request_bloc.dart';
 
-abstract class RequestEvent extends Equatable {
-  const RequestEvent();
+@freezed
+class RequestEvent with _$RequestEvent {
+  const factory RequestEvent.started() = _Started;
+  const factory RequestEvent.loadMore() = _LoadMore; // Add load more
+  const factory RequestEvent.refresh() = _Refresh;
 
-  @override
-  List<Object> get props => [];
-}
+  const factory RequestEvent.fetchRelateInformation(String requestId, String poCode) =
+      _FetchRelateInformation;
+  
+  const factory RequestEvent.fetchRequestsByStatusAndTitle(String status, String title) =
+      _FetchRequestsByStatusAndTitle;
 
-class FetchRequestsEvent extends RequestEvent {
-  @override
-  List<Object> get props => [];
+  const factory RequestEvent.fetchRequestsByStatuses(List<String> statuses) =
+      _FetchRequestsByStatuses;
 }

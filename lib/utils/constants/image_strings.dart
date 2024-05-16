@@ -1,6 +1,6 @@
 class AppImages {
   // Images
-  static const String logo = 'assets/images/logo.png';
+  static const String logo = 'assets/images/logo_transparent.png';
   static const String imageNotAvailable =
       'assets/images/Image_not_available.png';
 

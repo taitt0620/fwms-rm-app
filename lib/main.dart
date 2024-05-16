@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:fwms_rm_app/config/client/http_client.dart';
 import 'package:fwms_rm_app/config/router/router.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
@@ -7,12 +8,28 @@ import 'package:fwms_rm_app/features/auth/data/auth_api_client.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_repository.dart';
 import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_bloc.dart';
+import 'package:fwms_rm_app/features/create_quality_control_report/bloc/create_quality_control_report_bloc.dart';
+import 'package:fwms_rm_app/features/create_quality_control_report/data/create_quality_control_report_api_client.dart';
+import 'package:fwms_rm_app/features/create_quality_control_report/data/create_quality_control_report_repository.dart';
+import 'package:fwms_rm_app/features/create_quality_control_report/data/qcr_local_data_source.dart';
+import 'package:fwms_rm_app/features/create_request/bloc/create_request_bloc.dart';
+import 'package:fwms_rm_app/features/create_request/data/create_request_api_client.dart';
+import 'package:fwms_rm_app/features/create_request/data/create_request_repository.dart';
 import 'package:fwms_rm_app/features/purchase_order/bloc/purchase_order_bloc.dart';
 import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_api_client.dart';
 import 'package:fwms_rm_app/features/purchase_order/data/purchase_order_repository.dart';
 import 'package:fwms_rm_app/features/purchase_order_detail/bloc/purchase_order_detail_bloc.dart';
 import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_detail_api_client.dart';
 import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_detail_repository.dart';
+import 'package:fwms_rm_app/features/purchase_order_phase/bloc/purchase_order_phase_bloc.dart';
+import 'package:fwms_rm_app/features/purchase_order_phase/data/purchase_order_phase_api_client.dart';
+import 'package:fwms_rm_app/features/purchase_order_phase/data/purchase_order_phase_repository.dart';
+import 'package:fwms_rm_app/features/quality_control_report/bloc/quality_control_report_bloc.dart';
+import 'package:fwms_rm_app/features/quality_control_report/data/quality_control_report_api_client.dart';
+import 'package:fwms_rm_app/features/quality_control_report/data/quality_control_report_repository.dart';
+import 'package:fwms_rm_app/features/quality_control_report_detail/bloc/quality_control_report_detail_bloc.dart';
+import 'package:fwms_rm_app/features/quality_control_report_detail/data/quality_control_report_detail_api_client.dart';
+import 'package:fwms_rm_app/features/quality_control_report_detail/data/quality_control_report_detail_repository.dart';
 import 'package:fwms_rm_app/features/request/bloc/request_bloc.dart';
 import 'package:fwms_rm_app/features/request/data/request_api_client.dart';
 import 'package:fwms_rm_app/features/request/data/request_repository.dart';
@@ -23,8 +40,10 @@ import 'package:fwms_rm_app/utils/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Đảm bảo Flutter đã khởi tạo xong
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   final sf = await SharedPreferences.getInstance();
+  FlutterNativeSplash.remove();
   runApp(MyApp(
     sharedPreferences: sf,
   ));
@@ -47,18 +66,51 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => PurchaseOrderRepository(
-              purchaseOrderApiClient: PurchaseOrderApiClient(dio)),
+              apiClient: PurchaseOrderApiClient(dio),
+              authLocalDataSource: AuthLocalDataSource(sharedPreferences)),
         ),
         RepositoryProvider(
           create: (context) => PurchaseOrderDetailRepository(
             apiClient: PurchaseOrderDetailApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => PurchaseOrderPhaseRepository(
+            apiClient: PurchaseOrderPhaseApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
           ),
         ),
         RepositoryProvider(
           create: (context) => RequestRepository(
-            requestApiClient: RequestApiClient(dio),
+            apiClient: RequestApiClient(dio),
             authLocalDataSource: AuthLocalDataSource(sharedPreferences),
           ),
+        ),
+        RepositoryProvider(
+          create: (context) => CreateRequestRepository(
+            apiClient: CreateRequestApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => QualityControlReportRepository(
+            apiClient: QualityControlReportApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => QualityControlReportDetailRepository(
+            apiClient: QualityControlReportDetailApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => CreateQualityControlReportRepository(
+              localDataSource:
+                  QualityControlReportLocalDataSource(sharedPreferences),
+              authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+              apiClient: CreateQualityControlReportApiClient(dio)),
         ),
         RepositoryProvider(
           create: (context) => WarehouseRepository(
@@ -88,8 +140,33 @@ class MyApp extends StatelessWidget {
             ),
           ),
           BlocProvider(
+            create: (context) => PurchaseOrderPhaseBloc(
+              context.read<PurchaseOrderPhaseRepository>(),
+            ),
+          ),
+          BlocProvider(
             create: (context) => RequestBloc(
               context.read<RequestRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => CreateRequestBloc(
+              context.read<CreateRequestRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => QualityControlReportBloc(
+              context.read<QualityControlReportRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => QualityControlReportDetailBloc(
+              context.read<QualityControlReportDetailRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => CreateQualityControlReportBloc(
+              context.read<CreateQualityControlReportRepository>(),
             ),
           ),
           BlocProvider(
@@ -98,7 +175,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ],
-        child: AppContent(),
+        child: const AppContent(),
       ),
     );
   }

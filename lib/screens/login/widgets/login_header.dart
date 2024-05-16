@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
 import 'package:fwms_rm_app/utils/constants/text_strings.dart';
@@ -11,21 +12,29 @@ class loginHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image(
-          height: 150,
+        const Image(
+          height: 250,
           image: AssetImage(AppImages.logo),
+          color: AppColors.app,
         ),
-        Text(
-          AppTexts.loginTitle,
-          style: Theme.of(context).textTheme.headlineMedium,
+        const SizedBox(height: AppSizes.sm),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              AppTexts.loginTitle,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: AppSizes.sm),
+            Text(
+              AppTexts.sloganTitle,
+              style: Theme.of(context).textTheme.bodyMedium,
+            )
+          ],
         ),
-        SizedBox(height: AppSizes.sm),
-        Text(
-          AppTexts.sloganTitle,
-          style: Theme.of(context).textTheme.bodyMedium,
-        )
       ],
     );
   }

@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 class AppFormatter {
   static String formatDate(DateTime? date) {
     date ??= DateTime.now();
-    return DateFormat('dd MMMM yyyy').format(date);
+    return DateFormat('MMM d, h:mm a').format(date);
   }
 
   static String formatCurrency(double amount) {
@@ -13,12 +13,10 @@ class AppFormatter {
     return parts.join(',');
   }
 
-  static String formatStatus(String status) {
-    if (status == 'NotDeliveredEnough') {
-      return status.replaceAll(
-          'NotDeliveredEnough', 'Not Delivered Enough'); // or use split
-    } else {
-      return status;
-    }
+  static String addSpaces(String input) {
+    return input.replaceAllMapped(
+      RegExp(r'(?<=[a-z])(?=[A-Z])'),
+      (Match match) => ' ',
+    );
   }
 }

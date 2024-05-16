@@ -1,29 +1,15 @@
 part of 'purchase_order_bloc.dart';
 
-sealed class PurchaseOrderState extends Equatable {
-  const PurchaseOrderState();
+@freezed
+class PurchaseOrderState with _$PurchaseOrderState {
+  const PurchaseOrderState._();
 
-  @override
-  List<Object> get props => [];
-}
+  const factory PurchaseOrderState.initial() = _Initial;
+  const factory PurchaseOrderState.loading() = _Loading;
+  const factory PurchaseOrderState.loaded({
+    required List<PurchaseOrder> purchaseOrders,
+    required bool? hasReachedMax,
+  }) = _Loaded;
 
-final class PurchaseOrderInitial extends PurchaseOrderState {}
-
-final class PurchaseOrderLoadingState extends PurchaseOrderState {}
-
-class PurchaseOrderLoadedState extends PurchaseOrderState {
-  final List<PurchaseOrderResponseDto> purchaseOrders;
-  const PurchaseOrderLoadedState(this.purchaseOrders);
-
-  @override
-  List<Object> get props => [purchaseOrders];
-}
-
-class PurchaseOrderErrorState extends PurchaseOrderState {
-  final String message;
-
-  const PurchaseOrderErrorState(this.message);
-
-  @override
-  List<Object> get props => [message];
+  const factory PurchaseOrderState.error(Object? error) = _Error;
 }

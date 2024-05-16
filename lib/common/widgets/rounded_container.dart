@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:fwms_rm_app/config/theme/app_pallete.dart';
+import 'package:fwms_rm_app/utils/constants/colors.dart';
 
 class CustomRoundedContainer extends StatelessWidget {
   const CustomRoundedContainer(
@@ -9,8 +9,8 @@ class CustomRoundedContainer extends StatelessWidget {
       this.radius = 12,
       this.child,
       this.showBorder = false,
-      this.borderColor = AppPallete.enabledBorderColor,
-      this.backgroundColor = AppPallete.containerColor,
+      this.borderColor = AppColors.borderPrimary,
+      this.backgroundColor = AppColors.white,
       this.padding,
       this.margin});
 
@@ -31,14 +31,21 @@ class CustomRoundedContainer extends StatelessWidget {
       padding: padding,
       margin: margin,
       decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(radius),
-        border: showBorder
-            ? Border.all(
-                color: borderColor,
-              )
-            : null,
-      ),
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(radius),
+          border: showBorder
+              ? Border.all(
+                  color: borderColor,
+                )
+              : null,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.black.withOpacity(0.03),
+              spreadRadius: 0,
+              blurRadius: 12,
+              offset: const Offset(5, 7),
+            )
+          ]),
       child: child,
     );
   }

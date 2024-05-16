@@ -41,22 +41,22 @@ class CustomTextTheme {
     ),
     bodyMedium: const TextStyle().copyWith(
       fontSize: 14.0,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w500,
       color: Colors.black,
     ),
     bodySmall: const TextStyle().copyWith(
       fontSize: 14.0,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
       color: Colors.black,
     ),
     labelLarge: const TextStyle().copyWith(
       fontSize: 12.0,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
     labelMedium: const TextStyle().copyWith(
       fontSize: 12.0,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w500,
       color: Colors.black,
     ),
     labelSmall: const TextStyle().copyWith(

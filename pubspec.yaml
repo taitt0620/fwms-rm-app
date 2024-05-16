@@ -45,6 +45,17 @@ dependencies:
   intl: ^0.19.0
   skeletonizer: ^1.1.1
   jwt_decoder: ^2.0.1
+  shimmer: ^3.0.0
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+  bubble_tab_indicator: ^0.1.6
+  iconsax: ^0.0.8
+  delightful_toast: ^1.1.0
+  mobile_scanner: ^5.1.0
+  lottie: ^3.1.1
+  flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +67,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  build_runner: ^2.4.9
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -126,3 +140,17 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_native_splash:
+  color: "#335C49"
+  image: assets/images/logo.png
+  web: true
+  android_12:
+    color: "#335C49"
+    image: assets/images/logo.png
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: "AppIcon"
+  image_path: "assets/images/logo.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21

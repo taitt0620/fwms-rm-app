@@ -48,7 +48,7 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           children: [
             TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Image(
                     image: AssetImage(AppImages.iconZalando),
                     width: 24,
@@ -63,9 +63,9 @@ class _LoginFormState extends State<LoginForm> {
                   }
                   return null;
                 }),
-            SizedBox(height: AppSizes.spaceBtwInputField),
+            const SizedBox(height: AppSizes.spaceBtwInputField),
             TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Image(
                     image: AssetImage(AppImages.iconPassword),
                     width: 24,
@@ -86,29 +86,29 @@ class _LoginFormState extends State<LoginForm> {
                   }
                   return null;
                 }),
-            SizedBox(height: AppSizes.spaceBtwInputField / 2),
+            const SizedBox(height: AppSizes.spaceBtwInputField / 2),
 
             //Remember me and Forgot password
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Row(
-                  children: [
-                    //Remember me
-                    Checkbox(
-                        value: true,
-                        onChanged: (value) {
-                          Text(AppTexts.rememberMeTitle);
-                        }),
-                    Text(AppTexts.rememberMeTitle),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     //Remember me
+                //     Checkbox(
+                //         value: true,
+                //         onChanged: (value) {
+                //           Text(AppTexts.rememberMeTitle);
+                //         }),
+                //     Text(AppTexts.rememberMeTitle),
+                //   ],
+                // ),
                 TextButton(
                     onPressed: () {},
-                    child: Text(AppTexts.forgotPasswordTitle)),
+                    child: const Text(AppTexts.forgotPasswordTitle)),
               ],
             ),
-            SizedBox(height: AppSizes.spaceBtwSections),
+            const SizedBox(height: AppSizes.spaceBtwSections),
 
             // Login and Contact Us buttons
             SizedBox(
@@ -117,18 +117,18 @@ class _LoginFormState extends State<LoginForm> {
                 onPressed: () {
                   _handleSignIn(context);
                 },
-                child: Text(AppTexts.loginButtonTitle),
+                child: const Text(AppTexts.loginButtonTitle),
               ),
             ),
-            SizedBox(height: AppSizes.spaceBtwItems),
+            const SizedBox(height: AppSizes.spaceBtwItems),
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () {},
-                child: Text(AppTexts.contactUsTitle),
+                child: const Text(AppTexts.contactUsTitle),
               ),
             ),
-            SizedBox(height: AppSizes.spaceBtwSections),
+            const SizedBox(height: AppSizes.spaceBtwSections),
           ],
         ),
       ),

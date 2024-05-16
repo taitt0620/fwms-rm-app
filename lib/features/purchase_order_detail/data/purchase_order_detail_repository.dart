@@ -1,31 +1,18 @@
+import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_detail_api_client.dart';
-import 'package:fwms_rm_app/features/purchase_order_detail/dtos/purchase_order_detail_dto.dart';
+import 'package:fwms_rm_app/features/purchase_order_detail/models/purchase_order_detail.dart';
 
 class PurchaseOrderDetailRepository {
-  final PurchaseOrderDetailApiClient _apiClient;
+  final PurchaseOrderDetailApiClient apiClient;
+  final AuthLocalDataSource authLocalDataSource;
 
   PurchaseOrderDetailRepository(
-      {required PurchaseOrderDetailApiClient apiClient})
-      : _apiClient = apiClient;
+      {required this.apiClient, required this.authLocalDataSource});
 
-  Future<List<PurchaseOrderDetailDto>> fetchPurchaseOrderDetail(
-      String id) async {
-    return _apiClient.fetchPurchaseOrderDetail(id);
+  Future<List<PurchaseOrderDetail>> fetchPurchaseOrder(String id) async {
+    final token = await authLocalDataSource.getToken();
+    final purchaseOrderDetail =
+        await apiClient.fetchPurchaseOrder(id: id, token: token!);
+    return purchaseOrderDetail;
   }
-
-  // Future<List<PurchaseOrderDetailDto>> getPurchaseOrderDetails() async {
-  //   return _apiClient.getPurchaseOrderDetails();
-  // }
-
-  // Future<void> addPurchaseOrderDetail(PurchaseOrderDetailDto purchaseOrderDetail) async {
-  //   return _apiClient.addPurchaseOrderDetail(purchaseOrderDetail);
-  // }
-
-  // Future<void> updatePurchaseOrderDetail(PurchaseOrderDetailDto purchaseOrderDetail) async {
-  //   return _apiClient.updatePurchaseOrderDetail(purchaseOrderDetail);
-  // }
-
-  // Future<void> deletePurchaseOrderDetail(String id) async {
-  //   return _apiClient.deletePurchaseOrderDetail(id);
-  // }
 }

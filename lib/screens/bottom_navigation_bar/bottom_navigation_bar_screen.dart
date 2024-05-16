@@ -1,78 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_bloc.dart';
-import 'package:fwms_rm_app/screens/bottom_navigation_bar/screens.dart';
+import 'package:fwms_rm_app/screens/good_issue/good_issue_screen.dart';
+import 'package:fwms_rm_app/screens/good_receipt/good_receipt_screen.dart';
+import 'package:fwms_rm_app/screens/home/home_screen.dart';
+import 'package:fwms_rm_app/screens/search/search_screen.dart';
+import 'package:fwms_rm_app/screens/setting/setting_screen.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
-import 'package:go_router/go_router.dart';
+import 'package:iconsax/iconsax.dart';
 
 List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
   const BottomNavigationBarItem(
-    icon: Image(
-      image: AssetImage(
-        AppImages.iconHomeOutline,
-      ),
-    ),
+    icon: Icon(Iconsax.home, size: 24, color: AppColors.black),
     label: 'Home',
     activeIcon: ColorFiltered(
       colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
-      child: Image(
-        image: AssetImage(
-          AppImages.iconHome,
-        ),
-      ),
+      child: Icon(Iconsax.home5, size: 24),
     ),
   ),
   const BottomNavigationBarItem(
-    icon: Image(
-      image: AssetImage(
-        AppImages.iconSearchOutline,
-      ),
-    ),
+    icon: Icon(Iconsax.search_normal_1, size: 24, color: AppColors.black),
     label: 'Search',
     activeIcon: ColorFiltered(
       colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
-      child: Image(
-        image: AssetImage(
-          AppImages.iconSearch,
-        ),
-      ),
+      child: Icon(Iconsax.search_normal_1, size: 24),
     ),
-  ),
-  BottomNavigationBarItem(
-    icon: Container(
-      width: 55,
-      height: 55,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.primary,
-      ),
-      child: Center(
-        child: Image(
-          image: AssetImage(
-            AppImages.iconQrCodeOutline,
-          ),
-          color: Colors.white,
-        ),
-      ),
-    ),
-    label: '',
-    // activeIcon: Container(
-    //   width: 55,
-    //   height: 55,
-    //   decoration: BoxDecoration(
-    //     shape: BoxShape.circle,
-    //     color: AppColors.primary,
-    //   ),
-    //   child: Center(
-    //     child: Image(
-    //       image: AssetImage(
-    //         AppImages.iconQrCodeOutline,
-    //       ),
-    //       color: Colors.white,
-    //     ),
-    //   ),
-    // ),
   ),
   const BottomNavigationBarItem(
     icon: Image(
@@ -80,7 +33,7 @@ List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
         AppImages.iconProductOutline,
       ),
     ),
-    label: 'Category',
+    label: 'Good Receipt',
     activeIcon: ColorFiltered(
       colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
       child: Image(
@@ -96,6 +49,18 @@ List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
         AppImages.iconPersonOutline,
       ),
     ),
+    label: 'Good Issue',
+    activeIcon: ColorFiltered(
+      colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+      child: Image(
+        image: AssetImage(
+          AppImages.iconPerson,
+        ),
+      ),
+    ),
+  ),
+  const BottomNavigationBarItem(
+    icon: Icon(Iconsax.setting_2, size: 24, color: AppColors.black),
     label: 'Setting',
     activeIcon: ColorFiltered(
       colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
@@ -109,11 +74,11 @@ List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
 ];
 
 List<Widget> bottomNavScreens = const <Widget>[
-  HomeScreenTestedScreen(),
+  HomeScreen(),
   SearchScreen(),
-  QrCodeMobileScannerScreen(),
-  CategoryScreen(),
-  SettingScreen(),
+  GoodReceiptScreen(),
+  GoodIssueScreen(),
+  SettingScreen()
 ];
 
 class BottomNavigationBarScreen extends StatelessWidget {
@@ -125,13 +90,8 @@ class BottomNavigationBarScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         void onItemTapped(int index) {
-          if (index == 2) {
-            // If the QR Code item is tapped
-            context.goNamed('/qr-code');
-          } else {
-            BlocProvider.of<BottomNavBarBloc>(context)
-                .add(TabChanged(tabIndex: index));
-          }
+          BlocProvider.of<BottomNavBarBloc>(context)
+              .add(TabChanged(tabIndex: index));
         }
 
         return Scaffold(
@@ -143,7 +103,7 @@ class BottomNavigationBarScreen extends StatelessWidget {
               currentIndex: state.tabIndex,
               selectedItemColor: AppColors.primary,
               unselectedItemColor: AppColors.black,
-              showUnselectedLabels: false,
+              showUnselectedLabels: true,
               selectedFontSize: 14,
               unselectedFontSize: 12,
               elevation: 3,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
@@ -22,12 +21,12 @@ class LoginFailureScreen extends StatelessWidget {
           message,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
             _handleRetry(context);
           },
-          child: Text(AppTexts.retryButtonTitle),
+          child: const Text(AppTexts.retryButtonTitle),
         ),
       ],
     );

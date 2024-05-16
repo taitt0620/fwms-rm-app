@@ -1,16 +1,10 @@
 part of 'warehouse_bloc.dart';
 
-abstract class WarehouseEvent extends Equatable {
-  const WarehouseEvent();
-
-  @override
-  List<Object> get props => [];
-}
-
-class FetchWarehouseDetailEvent extends WarehouseEvent {
-  final String id;
-
-  const FetchWarehouseDetailEvent(this.id);
-  @override
-  List<Object> get props => [];
+@freezed
+class WarehouseEvent with _$WarehouseEvent {
+  const factory WarehouseEvent.started() = _Started;
+  const factory WarehouseEvent.loadMore() = _LoadMore;
+  const factory WarehouseEvent.refresh() = _Refresh;
+  const factory WarehouseEvent.fetchWarehouse(String id) = _FetchWarehouse;
+  const factory WarehouseEvent.fetchWarehouses() = _FetchWarehouses;
 }

@@ -14,11 +14,13 @@ class AuthSigninFailure extends AuthState {
   AuthSigninFailure(this.message);
 }
 
-class AuthAuthenticatedSuccess extends AuthState {
+class AuthAuthenticateSuccess extends AuthState {
   final String token;
 
-  AuthAuthenticatedSuccess(this.token);
+  AuthAuthenticateSuccess(this.token);
 }
+
+class AuthAuthenticateUnauthenticated extends AuthState {}
 
 class AuthAuthenticatedFailure extends AuthState {
   final String message;

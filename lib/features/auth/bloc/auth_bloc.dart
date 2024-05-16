@@ -37,7 +37,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       AuthAuthenticatedStarted event, Emitter<AuthState> emit) async {
     final result = await authRepository.getToken();
     return (switch (result) {
-      Success() => emit(AuthAuthenticatedSuccess(result.data)),
+      Success(data: final token) when token != null =>
+        emit(AuthAuthenticateSuccess(token)),
+      Success() => emit(AuthAuthenticateUnauthenticated()),
       Failure() => emit(AuthAuthenticatedFailure(result.message)),
     });
   }
@@ -45,7 +47,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _onCheckTokenExpiration(
       CheckTokenExpiration event, Emitter<AuthState> emit) async {
     _timer?.cancel();
-    _timer = Timer.periodic(Duration(minutes: 1), (timer) async {
+    _timer = Timer.periodic(const Duration(minutes: 1), (timer) async {
       var result = await authRepository.getToken();
       if (result is Success<String>) {
         var token = result.data;

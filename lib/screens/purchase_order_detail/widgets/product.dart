@@ -18,21 +18,21 @@ class Product extends StatelessWidget {
   final double unitPrice;
   @override
   Widget build(BuildContext context) {
-    final formattedAmount = AppFormatter.formatCurrency(this.subTotal);
-    final formattedUnitPrice = AppFormatter.formatCurrency(this.unitPrice);
+    final formattedAmount = AppFormatter.formatCurrency(subTotal);
+    final formattedUnitPrice = AppFormatter.formatCurrency(unitPrice);
     return Row(
       children: [
         Container(
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
           ),
-          child: Image(
+          child: const Image(
             image: AssetImage(AppImages.imageNotAvailable),
             width: 60,
             height: 60,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Expanded(

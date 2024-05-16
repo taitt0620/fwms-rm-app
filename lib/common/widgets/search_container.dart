@@ -44,7 +44,7 @@ class CustomSearchContainer extends StatelessWidget {
           child: Row(
             children: [
               Image(
-                image: icon ?? AssetImage(AppImages.iconSearch),
+                image: icon ?? const AssetImage(AppImages.iconSearch),
                 color: AppColors.black,
               ),
               const SizedBox(width: AppSizes.spaceBtwItems),
