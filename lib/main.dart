@@ -33,6 +33,9 @@ import 'package:fwms_rm_app/features/quality_control_report_detail/data/quality_
 import 'package:fwms_rm_app/features/request/bloc/request_bloc.dart';
 import 'package:fwms_rm_app/features/request/data/request_api_client.dart';
 import 'package:fwms_rm_app/features/request/data/request_repository.dart';
+import 'package:fwms_rm_app/features/user/bloc/user_bloc.dart';
+import 'package:fwms_rm_app/features/user/data/user_api_client.dart';
+import 'package:fwms_rm_app/features/user/data/user_repository.dart';
 import 'package:fwms_rm_app/features/warehouse/bloc/warehouse_bloc.dart';
 import 'package:fwms_rm_app/features/warehouse/data/warehouse_api_client.dart';
 import 'package:fwms_rm_app/features/warehouse/data/warehouse_repository.dart';
@@ -61,6 +64,12 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(
           create: (context) => AuthRepository(
             authApiClient: AuthApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => UserRepository(
+            apiClient: UserApiClient(dio),
             authLocalDataSource: AuthLocalDataSource(sharedPreferences),
           ),
         ),
@@ -128,6 +137,11 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => BottomNavBarBloc(),
+          ),
+          BlocProvider(
+            create: (context) => UserBloc(
+              context.read<UserRepository>(),
+            ),
           ),
           BlocProvider(
             create: (context) => PurchaseOrderBloc(

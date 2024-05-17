@@ -180,12 +180,10 @@ class ItemQualityControlReportDetail extends StatelessWidget {
                     .map(
                       (item) => DataRow(
                           cells: <DataCell>[
-                            DataCell(
-                                Text(
-                                  item.materialName ?? 'N/A',
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                showEditIcon: true),
+                            DataCell(Text(
+                              item.materialName ?? 'N/A',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            )),
                             DataCell(Text(
                               item.quantity.toString(),
                               style: Theme.of(context).textTheme.bodyMedium,
@@ -244,7 +242,7 @@ class ItemQualityControlReportDetail extends StatelessWidget {
             value: AppFormatter.formatDate(qcrd.inspectionDate),
           ),
           AdvancedInfoRow(
-            title: 'Receip Date',
+            title: 'Receipt Date',
             value: AppFormatter.formatDate(qcrd.receiptDate),
           ),
         ],

@@ -5,17 +5,20 @@ import 'package:fwms_rm_app/screens/bottom_navigation_bar/bottom_navigation_bar_
 import 'package:fwms_rm_app/screens/create_good_issue/create_good_issue_screen.dart';
 import 'package:fwms_rm_app/screens/create_good_receipt/create_good_receipt_screen.dart';
 import 'package:fwms_rm_app/screens/create_quality_control_report/create_report_screen.dart';
+import 'package:fwms_rm_app/screens/enquiry/enquiry-screen.dart';
 import 'package:fwms_rm_app/screens/good_issue/good_issue_screen.dart';
 import 'package:fwms_rm_app/screens/good_receipt/good_receipt_screen.dart';
 import 'package:fwms_rm_app/screens/home/home_screen.dart';
+import 'package:fwms_rm_app/screens/profile/edit_profile_screen.dart';
+import 'package:fwms_rm_app/screens/profile/profile_screen.dart';
 import 'package:fwms_rm_app/screens/purchase_order/purchase_order_screen.dart';
 import 'package:fwms_rm_app/screens/purchase_order_detail/purchase_order_detail_screen.dart';
 import 'package:fwms_rm_app/screens/qr_scan/qr_scan_screen.dart';
-import 'package:fwms_rm_app/screens/qr_scan/scanner.dart';
 import 'package:fwms_rm_app/screens/quality_control_report/quality_control_report_screen.dart';
 import 'package:fwms_rm_app/screens/quality_control_report_detail/quality_control_report_detail_screen.dart';
 import 'package:fwms_rm_app/screens/request/request_screen.dart';
 import 'package:fwms_rm_app/screens/login/login_screen.dart';
+import 'package:fwms_rm_app/screens/setting/setting_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteName {
@@ -28,6 +31,8 @@ class RouteName {
 
   ///home routes
   static const String home = '/home';
+  static const String enquiry = '/enquiry';
+  static const String setting = '/setting';
 
   ///purchase order routes
   static const String purchaseOrder = '/purchase-order';
@@ -59,6 +64,8 @@ class RouteName {
   static const String qrScan = '/qrscan';
   static const String scanner = '/scanner';
 
+  static const String profile = '/profile';
+  static const String editProfile = '/edit-profile';
   static const publicRoutes = [
     login,
   ];
@@ -92,6 +99,19 @@ final router = GoRouter(
       name: 'home',
       builder: (context, state) => const HomeScreen(),
     ),
+
+    GoRoute(
+      path: RouteName.enquiry,
+      name: 'enquiry',
+      builder: (context, state) => const EnquiryScreen(),
+    ),
+
+    GoRoute(
+      path: RouteName.setting,
+      name: 'setting',
+      builder: (context, state) => const SettingScreen(),
+    ),
+
     GoRoute(
       path: RouteName.purchaseOrder,
       name: 'purchase-order',
@@ -162,9 +182,27 @@ final router = GoRouter(
       builder: (context, state) => const QrScanScreen(),
     ),
     GoRoute(
-      path: RouteName.scanner,
-      name: 'scanner',
-      builder: (context, state) => const Scanner(),
+      path: RouteName.profile,
+      name: 'profile',
+      builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: RouteName.editProfile,
+      name: 'edit-profile',
+      builder: (context, state) {
+        final name = state.uri.queryParameters['name'];
+        final userName = state.uri.queryParameters['userName'];
+        final gender = state.uri.queryParameters['gender'];
+        final phone = state.uri.queryParameters['phone'];
+        final address = state.uri.queryParameters['address'];
+        return EditProfileScreen(
+          name: name,
+          userName: userName,
+          gender: int.parse(gender.toString()),
+          phone: phone,
+          address: address,
+        );
+      },
     ),
   ],
 );

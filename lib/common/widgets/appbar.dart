@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fwms_rm_app/utils/constants/image_strings.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
 import 'package:fwms_rm_app/utils/helpers/app_helper.dart';
+import 'package:iconsax/iconsax.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -40,10 +41,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             leading: showBackArrow
                 ? IconButton(
                     onPressed: onBackArrowPressed,
-                    icon: const Image(
-                      image: AssetImage(AppImages.iconBack),
-                      height: 24,
-                      width: 24,
+                    icon: const Icon(
+                      Iconsax.arrow_left_2,
+                      size: 24,
                     ),
                   )
                 : leadingIcon != null

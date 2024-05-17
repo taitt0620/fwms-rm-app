@@ -3,7 +3,7 @@ class AppImages {
   static const String logo = 'assets/images/logo_transparent.png';
   static const String imageNotAvailable =
       'assets/images/Image_not_available.png';
-
+  static const String imageProfile = 'assets/images/profile.png';
   // Icons
   static const String iconSupplier = 'assets/icons/icons8-supplier-24.png';
   static const String iconZalando = 'assets/icons/icons8-zalando-24.png';

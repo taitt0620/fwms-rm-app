@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:fwms_rm_app/common/widgets/appbar.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+class EnquiryScreen extends StatefulWidget {
+  const EnquiryScreen({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<EnquiryScreen> createState() => _EnquiryScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _EnquiryScreenState extends State<EnquiryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: Center(
         child: Text(
-          'Search Screen',
+          'Enquiry Screen',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),

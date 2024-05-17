@@ -280,7 +280,6 @@ class _RelateInfoDetailScreenState extends State<RelateInfoDetailScreen> {
                               debugPrint('Index: $index');
                               QualityControlReportDetails updatedItem =
                                   item.copyWith(
-                                // ... other fields ...
                                 materialName: materialNameController.text,
                                 quantity: int.parse(quantityController.text),
                                 unit: unitController.text,
@@ -300,11 +299,12 @@ class _RelateInfoDetailScreenState extends State<RelateInfoDetailScreen> {
 
                               context
                                   .read<CreateQualityControlReportBloc>()
-                                  .add(CreateQualityControlReportEvent
-                                      .updateItem(
-                                    index: index,
-                                    item: updatedItem,
-                                  ));
+                                  .add(
+                                    CreateQualityControlReportEvent.updateItem(
+                                      index: index,
+                                      item: updatedItem,
+                                    ),
+                                  );
 
                               // Add this line
 

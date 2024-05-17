@@ -168,20 +168,23 @@ class _QualityControlReportScreenState
                             height: AppSizes.spaceBtwItems,
                           ),
                           RichText(
-                              text: TextSpan(children: [
-                            TextSpan(
-                              text: '*',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .apply(color: AppColors.primary),
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: '*',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .apply(color: AppColors.primary),
+                                ),
+                                TextSpan(
+                                  text:
+                                      'Select a request to proceed with creating a Quality Control Report',
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
                             ),
-                            TextSpan(
-                              text:
-                                  'Select a request to proceed with creating a Quality Control Report',
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ])),
+                          ),
                           const SizedBox(
                             height: AppSizes.spaceBtwItems,
                           ),
