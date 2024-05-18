@@ -33,7 +33,7 @@ class _GoodIssueScreenState extends State<GoodIssueScreen> {
             const SizedBox(height: AppSizes.spaceBtwItems),
             ElevatedButton(
               onPressed: () async {
-                await context.push('/good-issue-create');
+                await context.push('/good-issue-note-create');
               },
               child: const Text('Navigate Test'),
             ),
@@ -48,13 +48,16 @@ class _GoodIssueScreenState extends State<GoodIssueScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: Text(
-          'Good Issue',
+          'Good Issue Note',
           style: Theme.of(context)
               .textTheme
               .headlineSmall!
               .apply(color: AppColors.black),
         ),
-        showBackArrow: false,
+        showBackArrow: true,
+        onBackArrowPressed: () {
+          context.pop();
+        },
       ),
       body: Center(
         child: Text('Good Issue Screen',
@@ -62,7 +65,8 @@ class _GoodIssueScreenState extends State<GoodIssueScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Iconsax.add),
+        backgroundColor: AppColors.primary,
+        child: const Icon(Iconsax.add, size: 24, color: AppColors.white),
         onPressed: () {
           _showBottomSheet(context);
         },

@@ -8,6 +8,9 @@ import 'package:fwms_rm_app/features/auth/data/auth_api_client.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_repository.dart';
 import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_bloc.dart';
+import 'package:fwms_rm_app/features/create_good_receipt_note/bloc/create_good_receipt_note_bloc.dart';
+import 'package:fwms_rm_app/features/create_good_receipt_note/data/create_good_receipt_note_repository.dart';
+import 'package:fwms_rm_app/features/create_good_receipt_note/data/grn_local_data_source.dart';
 import 'package:fwms_rm_app/features/create_quality_control_report/bloc/create_quality_control_report_bloc.dart';
 import 'package:fwms_rm_app/features/create_quality_control_report/data/create_quality_control_report_api_client.dart';
 import 'package:fwms_rm_app/features/create_quality_control_report/data/create_quality_control_report_repository.dart';
@@ -24,6 +27,7 @@ import 'package:fwms_rm_app/features/purchase_order_detail/data/purchase_order_d
 import 'package:fwms_rm_app/features/purchase_order_phase/bloc/purchase_order_phase_bloc.dart';
 import 'package:fwms_rm_app/features/purchase_order_phase/data/purchase_order_phase_api_client.dart';
 import 'package:fwms_rm_app/features/purchase_order_phase/data/purchase_order_phase_repository.dart';
+import 'package:fwms_rm_app/features/qr-scan/bloc/qr_scan_bloc.dart';
 import 'package:fwms_rm_app/features/quality_control_report/bloc/quality_control_report_bloc.dart';
 import 'package:fwms_rm_app/features/quality_control_report/data/quality_control_report_api_client.dart';
 import 'package:fwms_rm_app/features/quality_control_report/data/quality_control_report_repository.dart';
@@ -122,6 +126,11 @@ class MyApp extends StatelessWidget {
               apiClient: CreateQualityControlReportApiClient(dio)),
         ),
         RepositoryProvider(
+          create: (context) => CreateGoodReceiptNoteRepository(
+            localDataSource: GoodReceiptNoteLocalDataSource(sharedPreferences),
+          ),
+        ),
+        RepositoryProvider(
           create: (context) => WarehouseRepository(
             warehouseApiClient: WarehouseApiClient(dio),
             authLocalDataSource: AuthLocalDataSource(sharedPreferences),
@@ -184,9 +193,17 @@ class MyApp extends StatelessWidget {
             ),
           ),
           BlocProvider(
+            create: (context) => CreateGoodReceiptNoteBloc(
+              context.read<CreateGoodReceiptNoteRepository>(),
+            ),
+          ),
+          BlocProvider(
             create: (context) => WarehouseBloc(
               context.read<WarehouseRepository>(),
             ),
+          ),
+          BlocProvider(
+            create: (context) => QrScanBloc(),
           ),
         ],
         child: const AppContent(),

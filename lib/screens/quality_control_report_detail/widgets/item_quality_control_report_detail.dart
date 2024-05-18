@@ -174,7 +174,7 @@ class ItemQualityControlReportDetail extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: DataTable(
                 showCheckboxColumn: false,
-                headingRowColor: MaterialStateProperty.all(AppColors.primary),
+                headingRowColor: WidgetStateProperty.all(AppColors.primary),
                 columns: columns,
                 rows: qcrd.qualityControlReportDetails!
                     .map(

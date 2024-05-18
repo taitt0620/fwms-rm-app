@@ -48,6 +48,8 @@ class ItemRequest extends StatelessWidget {
                     ),
                     Text(
                       AppFormatter.addSpaces(request.title),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],

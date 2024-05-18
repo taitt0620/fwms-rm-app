@@ -11,7 +11,7 @@ class QualityControlReportLocalDataSource {
 
   Future<void> saveReport(CreateQualityControlReport report) async {
     String jsonString = jsonEncode(report.toJson());
-    final string = await sharedPreferences.setString(
+    await sharedPreferences.setString(
         CreateQualityControlReportDataConstants.report, jsonString);
   }
 

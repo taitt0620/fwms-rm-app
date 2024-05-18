@@ -29,3 +29,11 @@ class AuthAuthenticatedFailure extends AuthState {
 }
 
 class TokenExpired extends AuthState {}
+
+class AuthLogoutSuccess extends AuthState {}
+
+class AuthLogoutFailure extends AuthState {
+  AuthLogoutFailure(this.message);
+
+  final String message;
+}

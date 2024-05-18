@@ -16,6 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignInStarted>(_onSignInStarted);
     on<AuthAuthenticatedStarted>(_onAuthenticatedStarted);
     on<CheckTokenExpiration>(_onCheckTokenExpiration);
+    on<AuthLogoutStarted>(_onAuthLogoutStarted);
   }
 
   void _onStarted(AuthStarted event, Emitter<AuthState> emit) async {
@@ -62,5 +63,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> close() {
     _timer?.cancel();
     return super.close();
+  }
+
+  void _onAuthLogoutStarted(
+      AuthLogoutStarted event, Emitter<AuthState> emit) async {
+    final result = await authRepository.signOut();
+    return (switch (result) {
+      Success() => emit(AuthLogoutSuccess()),
+      Failure() => emit(AuthLogoutFailure(result.message)),
+    });
   }
 }

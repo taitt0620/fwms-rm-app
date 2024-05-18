@@ -126,8 +126,6 @@ class _QualityControlReportScreenState
                 'Request Not Found',
                 message.toString(),
               ),
-              requestsByStatusAndTitleLoading: () =>
-                  LoadingIndicatorHelper.showLoadingIndicator(context),
               requestsByStatusAndTitleError: (error) =>
                   DelightfulToastHelper.error(
                 context,

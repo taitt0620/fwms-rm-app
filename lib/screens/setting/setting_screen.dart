@@ -5,9 +5,12 @@ import 'package:fwms_rm_app/common/widgets/circle_image.dart';
 import 'package:fwms_rm_app/common/widgets/rounded_container.dart';
 import 'package:fwms_rm_app/common/widgets/section_heading.dart';
 import 'package:fwms_rm_app/common/widgets/setting_menu_tile.dart';
+import 'package:fwms_rm_app/config/router/router.dart';
+import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/features/user/bloc/user_bloc.dart';
 import 'package:fwms_rm_app/utils/constants/colors.dart';
 import 'package:fwms_rm_app/utils/constants/sizes.dart';
+import 'package:fwms_rm_app/utils/helpers/delightful_toast_helper.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -123,12 +126,28 @@ class _SettingScreenState extends State<SettingScreen> {
                       trailing: const Icon(Iconsax.arrow_right_3),
                       onTap: () {},
                     ),
-                    CustomSettingMenuTile(
-                      icon: Iconsax.logout,
-                      title: 'Log out',
-                      subTitle: 'Log out of the application',
-                      trailing: const Icon(Iconsax.arrow_right_3),
-                      onTap: () {},
+                    BlocListener<AuthBloc, AuthState>(
+                      listener: (context, state) {
+                        switch (state) {
+                          case AuthLogoutSuccess():
+                            context.read<AuthBloc>().add(AuthStarted());
+                            context.go('/login');
+                            break;
+                          case AuthLogoutFailure(message: final msg):
+                            DelightfulToastHelper.error(context, 'Error', msg);
+                            break;
+                          default:
+                        }
+                      },
+                      child: CustomSettingMenuTile(
+                        icon: Iconsax.logout,
+                        title: 'Log out',
+                        subTitle: 'Log out of the application',
+                        trailing: const Icon(Iconsax.arrow_right_3),
+                        onTap: () {
+                          context.read<AuthBloc>().add(AuthLogoutStarted());
+                        },
+                      ),
                     ),
                   ],
                 ),

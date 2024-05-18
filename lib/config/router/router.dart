@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/features/auth/bloc/auth_bloc.dart';
 import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_bloc.dart';
+import 'package:fwms_rm_app/features/qr-scan/models/qr_code_data.dart';
 import 'package:fwms_rm_app/screens/bottom_navigation_bar/bottom_navigation_bar_screen.dart';
 import 'package:fwms_rm_app/screens/create_good_issue/create_good_issue_screen.dart';
 import 'package:fwms_rm_app/screens/create_good_receipt/create_good_receipt_screen.dart';
@@ -51,14 +52,14 @@ class RouteName {
       '/quality-control-report-create';
 
   ///good receipt routes
-  static const String goodReceipt = '/good-receipt';
-  static const String goodReceiptDetail = '/good-receipt-detail';
-  static const String goodReceiptCreate = '/good-receipt-create';
+  static const String goodReceipt = '/good-receipt-note';
+  static const String goodReceiptDetail = '/good-receipt-note-detail';
+  static const String goodReceiptCreate = '/good-receipt-note-create';
 
   ///good issue routes
-  static const String goodIssue = '/good-issue';
-  static const String goodIssueDetail = '/good-issue-detail';
-  static const String goodIssueCreate = '/good-issue-create';
+  static const String goodIssue = '/good-issue-note';
+  static const String goodIssueDetail = '/good-issue-note-detail';
+  static const String goodIssueCreate = '/good-issue-note-create';
 
   ///qr scan routes
   static const String qrScan = '/qrscan';
@@ -161,7 +162,13 @@ final router = GoRouter(
     GoRoute(
       path: RouteName.goodReceiptCreate,
       name: 'create-good-receipt',
-      builder: (context, state) => const CreateGoodReceiptScreen(),
+      builder: (context, state) {
+        final poCode = state.uri.queryParameters['poCode'];
+        final requestId = state.uri.queryParameters['requestId'];
+        final phase = state.uri.queryParameters['phase'];
+        return CreateGoodReceiptScreen(
+            poCode: poCode, requestId: requestId, phase: phase);
+      },
     ),
     // good Issue screen
     GoRoute(
