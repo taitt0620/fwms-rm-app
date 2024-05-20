@@ -893,7 +893,7 @@ class _RelateInfoDetailScreenState extends State<RelateInfoDetailScreen> {
               scrollDirection: Axis.horizontal,
               child: DataTable(
                 showCheckboxColumn: false,
-                headingRowColor: MaterialStateProperty.all(AppColors.primary),
+                headingRowColor: WidgetStateProperty.all(AppColors.primary),
                 columns: columns,
                 rows: report.qualityControlReportDetails
                     .map(

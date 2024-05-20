@@ -10,4 +10,8 @@ class CreateGoodReceiptNoteState with _$CreateGoodReceiptNoteState {
   const factory CreateGoodReceiptNoteState.updateNoteInProgress() = _UpdateNoteInProgress;
   const factory CreateGoodReceiptNoteState.updateNoteSuccess(CreateGoodReceiptNote goodReceipt) = _UpdateNoteSuccess;
   const factory CreateGoodReceiptNoteState.updateNoteFailure(String message) = _UpdateNoteFailure;
+
+  const factory CreateGoodReceiptNoteState.createNoteInProgress() =  _CreateNoteInProgress;
+  const factory CreateGoodReceiptNoteState.createNoteSuccess() =  _CreateNoteSuccess;
+  const factory CreateGoodReceiptNoteState.createNoteFailure(String? error) =  _CreateNoteFailure;
 }

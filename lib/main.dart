@@ -9,6 +9,7 @@ import 'package:fwms_rm_app/features/auth/data/auth_local_data_source.dart';
 import 'package:fwms_rm_app/features/auth/data/auth_repository.dart';
 import 'package:fwms_rm_app/features/bottom_navigation_bar/bloc/bottom_nav_bar_bloc.dart';
 import 'package:fwms_rm_app/features/create_good_receipt_note/bloc/create_good_receipt_note_bloc.dart';
+import 'package:fwms_rm_app/features/create_good_receipt_note/data/create_good_receipt_note_api_client.dart';
 import 'package:fwms_rm_app/features/create_good_receipt_note/data/create_good_receipt_note_repository.dart';
 import 'package:fwms_rm_app/features/create_good_receipt_note/data/grn_local_data_source.dart';
 import 'package:fwms_rm_app/features/create_quality_control_report/bloc/create_quality_control_report_bloc.dart';
@@ -128,6 +129,8 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(
           create: (context) => CreateGoodReceiptNoteRepository(
             localDataSource: GoodReceiptNoteLocalDataSource(sharedPreferences),
+            apiClient: CreateGoodReceiptNoteApiClient(dio),
+            authLocalDataSource: AuthLocalDataSource(sharedPreferences),
           ),
         ),
         RepositoryProvider(

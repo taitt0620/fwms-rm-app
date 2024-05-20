@@ -21,6 +21,13 @@ mixin _$CreateGoodReceiptNoteEvent {
     required TResult Function() started,
     required TResult Function(String poCode, int phase) createGoodReceiptNote,
     required TResult Function(QrCodeData qrCodeData) addGoodReceiptNoteDetail,
+    required TResult Function(int index, GoodReceipNoteDetail item)
+        updateDetail,
+    required TResult Function(CreateGoodReceiptNote updatedInfo)
+        updateInfomation,
+    required TResult Function(
+            CreateGoodReceiptNote createdNote, String requestId)
+        createNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +35,10 @@ mixin _$CreateGoodReceiptNoteEvent {
     TResult? Function()? started,
     TResult? Function(String poCode, int phase)? createGoodReceiptNote,
     TResult? Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult? Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult? Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult? Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +46,10 @@ mixin _$CreateGoodReceiptNoteEvent {
     TResult Function()? started,
     TResult Function(String poCode, int phase)? createGoodReceiptNote,
     TResult Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,6 +60,9 @@ mixin _$CreateGoodReceiptNoteEvent {
         createGoodReceiptNote,
     required TResult Function(_AddGoodReceiptNoteDetail value)
         addGoodReceiptNoteDetail,
+    required TResult Function(_UpdateDetail value) updateDetail,
+    required TResult Function(_UpdateInformation value) updateInfomation,
+    required TResult Function(_CreateNote value) createNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +71,9 @@ mixin _$CreateGoodReceiptNoteEvent {
     TResult? Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult? Function(_AddGoodReceiptNoteDetail value)?
         addGoodReceiptNoteDetail,
+    TResult? Function(_UpdateDetail value)? updateDetail,
+    TResult? Function(_UpdateInformation value)? updateInfomation,
+    TResult? Function(_CreateNote value)? createNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +81,9 @@ mixin _$CreateGoodReceiptNoteEvent {
     TResult Function(_Started value)? started,
     TResult Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult Function(_AddGoodReceiptNoteDetail value)? addGoodReceiptNoteDetail,
+    TResult Function(_UpdateDetail value)? updateDetail,
+    TResult Function(_UpdateInformation value)? updateInfomation,
+    TResult Function(_CreateNote value)? createNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +150,13 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(String poCode, int phase) createGoodReceiptNote,
     required TResult Function(QrCodeData qrCodeData) addGoodReceiptNoteDetail,
+    required TResult Function(int index, GoodReceipNoteDetail item)
+        updateDetail,
+    required TResult Function(CreateGoodReceiptNote updatedInfo)
+        updateInfomation,
+    required TResult Function(
+            CreateGoodReceiptNote createdNote, String requestId)
+        createNote,
   }) {
     return started();
   }
@@ -136,6 +167,10 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(String poCode, int phase)? createGoodReceiptNote,
     TResult? Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult? Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult? Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult? Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
   }) {
     return started?.call();
   }
@@ -146,6 +181,10 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function(String poCode, int phase)? createGoodReceiptNote,
     TResult Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +201,9 @@ class _$StartedImpl implements _Started {
         createGoodReceiptNote,
     required TResult Function(_AddGoodReceiptNoteDetail value)
         addGoodReceiptNoteDetail,
+    required TResult Function(_UpdateDetail value) updateDetail,
+    required TResult Function(_UpdateInformation value) updateInfomation,
+    required TResult Function(_CreateNote value) createNote,
   }) {
     return started(this);
   }
@@ -173,6 +215,9 @@ class _$StartedImpl implements _Started {
     TResult? Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult? Function(_AddGoodReceiptNoteDetail value)?
         addGoodReceiptNoteDetail,
+    TResult? Function(_UpdateDetail value)? updateDetail,
+    TResult? Function(_UpdateInformation value)? updateInfomation,
+    TResult? Function(_CreateNote value)? createNote,
   }) {
     return started?.call(this);
   }
@@ -183,6 +228,9 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult Function(_AddGoodReceiptNoteDetail value)? addGoodReceiptNoteDetail,
+    TResult Function(_UpdateDetail value)? updateDetail,
+    TResult Function(_UpdateInformation value)? updateInfomation,
+    TResult Function(_CreateNote value)? createNote,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -275,6 +323,13 @@ class _$CreateGoodReceiptNoteImpl implements _CreateGoodReceiptNote {
     required TResult Function() started,
     required TResult Function(String poCode, int phase) createGoodReceiptNote,
     required TResult Function(QrCodeData qrCodeData) addGoodReceiptNoteDetail,
+    required TResult Function(int index, GoodReceipNoteDetail item)
+        updateDetail,
+    required TResult Function(CreateGoodReceiptNote updatedInfo)
+        updateInfomation,
+    required TResult Function(
+            CreateGoodReceiptNote createdNote, String requestId)
+        createNote,
   }) {
     return createGoodReceiptNote(poCode, phase);
   }
@@ -285,6 +340,10 @@ class _$CreateGoodReceiptNoteImpl implements _CreateGoodReceiptNote {
     TResult? Function()? started,
     TResult? Function(String poCode, int phase)? createGoodReceiptNote,
     TResult? Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult? Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult? Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult? Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
   }) {
     return createGoodReceiptNote?.call(poCode, phase);
   }
@@ -295,6 +354,10 @@ class _$CreateGoodReceiptNoteImpl implements _CreateGoodReceiptNote {
     TResult Function()? started,
     TResult Function(String poCode, int phase)? createGoodReceiptNote,
     TResult Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
     required TResult orElse(),
   }) {
     if (createGoodReceiptNote != null) {
@@ -311,6 +374,9 @@ class _$CreateGoodReceiptNoteImpl implements _CreateGoodReceiptNote {
         createGoodReceiptNote,
     required TResult Function(_AddGoodReceiptNoteDetail value)
         addGoodReceiptNoteDetail,
+    required TResult Function(_UpdateDetail value) updateDetail,
+    required TResult Function(_UpdateInformation value) updateInfomation,
+    required TResult Function(_CreateNote value) createNote,
   }) {
     return createGoodReceiptNote(this);
   }
@@ -322,6 +388,9 @@ class _$CreateGoodReceiptNoteImpl implements _CreateGoodReceiptNote {
     TResult? Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult? Function(_AddGoodReceiptNoteDetail value)?
         addGoodReceiptNoteDetail,
+    TResult? Function(_UpdateDetail value)? updateDetail,
+    TResult? Function(_UpdateInformation value)? updateInfomation,
+    TResult? Function(_CreateNote value)? createNote,
   }) {
     return createGoodReceiptNote?.call(this);
   }
@@ -332,6 +401,9 @@ class _$CreateGoodReceiptNoteImpl implements _CreateGoodReceiptNote {
     TResult Function(_Started value)? started,
     TResult Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult Function(_AddGoodReceiptNoteDetail value)? addGoodReceiptNoteDetail,
+    TResult Function(_UpdateDetail value)? updateDetail,
+    TResult Function(_UpdateInformation value)? updateInfomation,
+    TResult Function(_CreateNote value)? createNote,
     required TResult orElse(),
   }) {
     if (createGoodReceiptNote != null) {
@@ -435,6 +507,13 @@ class _$AddGoodReceiptNoteDetailImpl implements _AddGoodReceiptNoteDetail {
     required TResult Function() started,
     required TResult Function(String poCode, int phase) createGoodReceiptNote,
     required TResult Function(QrCodeData qrCodeData) addGoodReceiptNoteDetail,
+    required TResult Function(int index, GoodReceipNoteDetail item)
+        updateDetail,
+    required TResult Function(CreateGoodReceiptNote updatedInfo)
+        updateInfomation,
+    required TResult Function(
+            CreateGoodReceiptNote createdNote, String requestId)
+        createNote,
   }) {
     return addGoodReceiptNoteDetail(qrCodeData);
   }
@@ -445,6 +524,10 @@ class _$AddGoodReceiptNoteDetailImpl implements _AddGoodReceiptNoteDetail {
     TResult? Function()? started,
     TResult? Function(String poCode, int phase)? createGoodReceiptNote,
     TResult? Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult? Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult? Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult? Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
   }) {
     return addGoodReceiptNoteDetail?.call(qrCodeData);
   }
@@ -455,6 +538,10 @@ class _$AddGoodReceiptNoteDetailImpl implements _AddGoodReceiptNoteDetail {
     TResult Function()? started,
     TResult Function(String poCode, int phase)? createGoodReceiptNote,
     TResult Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
     required TResult orElse(),
   }) {
     if (addGoodReceiptNoteDetail != null) {
@@ -471,6 +558,9 @@ class _$AddGoodReceiptNoteDetailImpl implements _AddGoodReceiptNoteDetail {
         createGoodReceiptNote,
     required TResult Function(_AddGoodReceiptNoteDetail value)
         addGoodReceiptNoteDetail,
+    required TResult Function(_UpdateDetail value) updateDetail,
+    required TResult Function(_UpdateInformation value) updateInfomation,
+    required TResult Function(_CreateNote value) createNote,
   }) {
     return addGoodReceiptNoteDetail(this);
   }
@@ -482,6 +572,9 @@ class _$AddGoodReceiptNoteDetailImpl implements _AddGoodReceiptNoteDetail {
     TResult? Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult? Function(_AddGoodReceiptNoteDetail value)?
         addGoodReceiptNoteDetail,
+    TResult? Function(_UpdateDetail value)? updateDetail,
+    TResult? Function(_UpdateInformation value)? updateInfomation,
+    TResult? Function(_CreateNote value)? createNote,
   }) {
     return addGoodReceiptNoteDetail?.call(this);
   }
@@ -492,6 +585,9 @@ class _$AddGoodReceiptNoteDetailImpl implements _AddGoodReceiptNoteDetail {
     TResult Function(_Started value)? started,
     TResult Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
     TResult Function(_AddGoodReceiptNoteDetail value)? addGoodReceiptNoteDetail,
+    TResult Function(_UpdateDetail value)? updateDetail,
+    TResult Function(_UpdateInformation value)? updateInfomation,
+    TResult Function(_CreateNote value)? createNote,
     required TResult orElse(),
   }) {
     if (addGoodReceiptNoteDetail != null) {
@@ -512,6 +608,563 @@ abstract class _AddGoodReceiptNoteDetail implements CreateGoodReceiptNoteEvent {
 }
 
 /// @nodoc
+abstract class _$$UpdateDetailImplCopyWith<$Res> {
+  factory _$$UpdateDetailImplCopyWith(
+          _$UpdateDetailImpl value, $Res Function(_$UpdateDetailImpl) then) =
+      __$$UpdateDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index, GoodReceipNoteDetail item});
+
+  $GoodReceipNoteDetailCopyWith<$Res> get item;
+}
+
+/// @nodoc
+class __$$UpdateDetailImplCopyWithImpl<$Res>
+    extends _$CreateGoodReceiptNoteEventCopyWithImpl<$Res, _$UpdateDetailImpl>
+    implements _$$UpdateDetailImplCopyWith<$Res> {
+  __$$UpdateDetailImplCopyWithImpl(
+      _$UpdateDetailImpl _value, $Res Function(_$UpdateDetailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+    Object? item = null,
+  }) {
+    return _then(_$UpdateDetailImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as GoodReceipNoteDetail,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $GoodReceipNoteDetailCopyWith<$Res> get item {
+    return $GoodReceipNoteDetailCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateDetailImpl implements _UpdateDetail {
+  const _$UpdateDetailImpl({required this.index, required this.item});
+
+  @override
+  final int index;
+  @override
+  final GoodReceipNoteDetail item;
+
+  @override
+  String toString() {
+    return 'CreateGoodReceiptNoteEvent.updateDetail(index: $index, item: $item)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateDetailImpl &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.item, item) || other.item == item));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index, item);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateDetailImplCopyWith<_$UpdateDetailImpl> get copyWith =>
+      __$$UpdateDetailImplCopyWithImpl<_$UpdateDetailImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String poCode, int phase) createGoodReceiptNote,
+    required TResult Function(QrCodeData qrCodeData) addGoodReceiptNoteDetail,
+    required TResult Function(int index, GoodReceipNoteDetail item)
+        updateDetail,
+    required TResult Function(CreateGoodReceiptNote updatedInfo)
+        updateInfomation,
+    required TResult Function(
+            CreateGoodReceiptNote createdNote, String requestId)
+        createNote,
+  }) {
+    return updateDetail(index, item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String poCode, int phase)? createGoodReceiptNote,
+    TResult? Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult? Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult? Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult? Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
+  }) {
+    return updateDetail?.call(index, item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String poCode, int phase)? createGoodReceiptNote,
+    TResult Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
+    required TResult orElse(),
+  }) {
+    if (updateDetail != null) {
+      return updateDetail(index, item);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_CreateGoodReceiptNote value)
+        createGoodReceiptNote,
+    required TResult Function(_AddGoodReceiptNoteDetail value)
+        addGoodReceiptNoteDetail,
+    required TResult Function(_UpdateDetail value) updateDetail,
+    required TResult Function(_UpdateInformation value) updateInfomation,
+    required TResult Function(_CreateNote value) createNote,
+  }) {
+    return updateDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
+    TResult? Function(_AddGoodReceiptNoteDetail value)?
+        addGoodReceiptNoteDetail,
+    TResult? Function(_UpdateDetail value)? updateDetail,
+    TResult? Function(_UpdateInformation value)? updateInfomation,
+    TResult? Function(_CreateNote value)? createNote,
+  }) {
+    return updateDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
+    TResult Function(_AddGoodReceiptNoteDetail value)? addGoodReceiptNoteDetail,
+    TResult Function(_UpdateDetail value)? updateDetail,
+    TResult Function(_UpdateInformation value)? updateInfomation,
+    TResult Function(_CreateNote value)? createNote,
+    required TResult orElse(),
+  }) {
+    if (updateDetail != null) {
+      return updateDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateDetail implements CreateGoodReceiptNoteEvent {
+  const factory _UpdateDetail(
+      {required final int index,
+      required final GoodReceipNoteDetail item}) = _$UpdateDetailImpl;
+
+  int get index;
+  GoodReceipNoteDetail get item;
+  @JsonKey(ignore: true)
+  _$$UpdateDetailImplCopyWith<_$UpdateDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateInformationImplCopyWith<$Res> {
+  factory _$$UpdateInformationImplCopyWith(_$UpdateInformationImpl value,
+          $Res Function(_$UpdateInformationImpl) then) =
+      __$$UpdateInformationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CreateGoodReceiptNote updatedInfo});
+
+  $CreateGoodReceiptNoteCopyWith<$Res> get updatedInfo;
+}
+
+/// @nodoc
+class __$$UpdateInformationImplCopyWithImpl<$Res>
+    extends _$CreateGoodReceiptNoteEventCopyWithImpl<$Res,
+        _$UpdateInformationImpl>
+    implements _$$UpdateInformationImplCopyWith<$Res> {
+  __$$UpdateInformationImplCopyWithImpl(_$UpdateInformationImpl _value,
+      $Res Function(_$UpdateInformationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? updatedInfo = null,
+  }) {
+    return _then(_$UpdateInformationImpl(
+      updatedInfo: null == updatedInfo
+          ? _value.updatedInfo
+          : updatedInfo // ignore: cast_nullable_to_non_nullable
+              as CreateGoodReceiptNote,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreateGoodReceiptNoteCopyWith<$Res> get updatedInfo {
+    return $CreateGoodReceiptNoteCopyWith<$Res>(_value.updatedInfo, (value) {
+      return _then(_value.copyWith(updatedInfo: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateInformationImpl implements _UpdateInformation {
+  const _$UpdateInformationImpl({required this.updatedInfo});
+
+  @override
+  final CreateGoodReceiptNote updatedInfo;
+
+  @override
+  String toString() {
+    return 'CreateGoodReceiptNoteEvent.updateInfomation(updatedInfo: $updatedInfo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateInformationImpl &&
+            (identical(other.updatedInfo, updatedInfo) ||
+                other.updatedInfo == updatedInfo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, updatedInfo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateInformationImplCopyWith<_$UpdateInformationImpl> get copyWith =>
+      __$$UpdateInformationImplCopyWithImpl<_$UpdateInformationImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String poCode, int phase) createGoodReceiptNote,
+    required TResult Function(QrCodeData qrCodeData) addGoodReceiptNoteDetail,
+    required TResult Function(int index, GoodReceipNoteDetail item)
+        updateDetail,
+    required TResult Function(CreateGoodReceiptNote updatedInfo)
+        updateInfomation,
+    required TResult Function(
+            CreateGoodReceiptNote createdNote, String requestId)
+        createNote,
+  }) {
+    return updateInfomation(updatedInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String poCode, int phase)? createGoodReceiptNote,
+    TResult? Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult? Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult? Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult? Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
+  }) {
+    return updateInfomation?.call(updatedInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String poCode, int phase)? createGoodReceiptNote,
+    TResult Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
+    required TResult orElse(),
+  }) {
+    if (updateInfomation != null) {
+      return updateInfomation(updatedInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_CreateGoodReceiptNote value)
+        createGoodReceiptNote,
+    required TResult Function(_AddGoodReceiptNoteDetail value)
+        addGoodReceiptNoteDetail,
+    required TResult Function(_UpdateDetail value) updateDetail,
+    required TResult Function(_UpdateInformation value) updateInfomation,
+    required TResult Function(_CreateNote value) createNote,
+  }) {
+    return updateInfomation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
+    TResult? Function(_AddGoodReceiptNoteDetail value)?
+        addGoodReceiptNoteDetail,
+    TResult? Function(_UpdateDetail value)? updateDetail,
+    TResult? Function(_UpdateInformation value)? updateInfomation,
+    TResult? Function(_CreateNote value)? createNote,
+  }) {
+    return updateInfomation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
+    TResult Function(_AddGoodReceiptNoteDetail value)? addGoodReceiptNoteDetail,
+    TResult Function(_UpdateDetail value)? updateDetail,
+    TResult Function(_UpdateInformation value)? updateInfomation,
+    TResult Function(_CreateNote value)? createNote,
+    required TResult orElse(),
+  }) {
+    if (updateInfomation != null) {
+      return updateInfomation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateInformation implements CreateGoodReceiptNoteEvent {
+  const factory _UpdateInformation(
+          {required final CreateGoodReceiptNote updatedInfo}) =
+      _$UpdateInformationImpl;
+
+  CreateGoodReceiptNote get updatedInfo;
+  @JsonKey(ignore: true)
+  _$$UpdateInformationImplCopyWith<_$UpdateInformationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateNoteImplCopyWith<$Res> {
+  factory _$$CreateNoteImplCopyWith(
+          _$CreateNoteImpl value, $Res Function(_$CreateNoteImpl) then) =
+      __$$CreateNoteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CreateGoodReceiptNote createdNote, String requestId});
+
+  $CreateGoodReceiptNoteCopyWith<$Res> get createdNote;
+}
+
+/// @nodoc
+class __$$CreateNoteImplCopyWithImpl<$Res>
+    extends _$CreateGoodReceiptNoteEventCopyWithImpl<$Res, _$CreateNoteImpl>
+    implements _$$CreateNoteImplCopyWith<$Res> {
+  __$$CreateNoteImplCopyWithImpl(
+      _$CreateNoteImpl _value, $Res Function(_$CreateNoteImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? createdNote = null,
+    Object? requestId = null,
+  }) {
+    return _then(_$CreateNoteImpl(
+      createdNote: null == createdNote
+          ? _value.createdNote
+          : createdNote // ignore: cast_nullable_to_non_nullable
+              as CreateGoodReceiptNote,
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreateGoodReceiptNoteCopyWith<$Res> get createdNote {
+    return $CreateGoodReceiptNoteCopyWith<$Res>(_value.createdNote, (value) {
+      return _then(_value.copyWith(createdNote: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateNoteImpl implements _CreateNote {
+  const _$CreateNoteImpl({required this.createdNote, required this.requestId});
+
+  @override
+  final CreateGoodReceiptNote createdNote;
+  @override
+  final String requestId;
+
+  @override
+  String toString() {
+    return 'CreateGoodReceiptNoteEvent.createNote(createdNote: $createdNote, requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateNoteImpl &&
+            (identical(other.createdNote, createdNote) ||
+                other.createdNote == createdNote) &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, createdNote, requestId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateNoteImplCopyWith<_$CreateNoteImpl> get copyWith =>
+      __$$CreateNoteImplCopyWithImpl<_$CreateNoteImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String poCode, int phase) createGoodReceiptNote,
+    required TResult Function(QrCodeData qrCodeData) addGoodReceiptNoteDetail,
+    required TResult Function(int index, GoodReceipNoteDetail item)
+        updateDetail,
+    required TResult Function(CreateGoodReceiptNote updatedInfo)
+        updateInfomation,
+    required TResult Function(
+            CreateGoodReceiptNote createdNote, String requestId)
+        createNote,
+  }) {
+    return createNote(createdNote, requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String poCode, int phase)? createGoodReceiptNote,
+    TResult? Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult? Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult? Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult? Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
+  }) {
+    return createNote?.call(createdNote, requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String poCode, int phase)? createGoodReceiptNote,
+    TResult Function(QrCodeData qrCodeData)? addGoodReceiptNoteDetail,
+    TResult Function(int index, GoodReceipNoteDetail item)? updateDetail,
+    TResult Function(CreateGoodReceiptNote updatedInfo)? updateInfomation,
+    TResult Function(CreateGoodReceiptNote createdNote, String requestId)?
+        createNote,
+    required TResult orElse(),
+  }) {
+    if (createNote != null) {
+      return createNote(createdNote, requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_CreateGoodReceiptNote value)
+        createGoodReceiptNote,
+    required TResult Function(_AddGoodReceiptNoteDetail value)
+        addGoodReceiptNoteDetail,
+    required TResult Function(_UpdateDetail value) updateDetail,
+    required TResult Function(_UpdateInformation value) updateInfomation,
+    required TResult Function(_CreateNote value) createNote,
+  }) {
+    return createNote(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
+    TResult? Function(_AddGoodReceiptNoteDetail value)?
+        addGoodReceiptNoteDetail,
+    TResult? Function(_UpdateDetail value)? updateDetail,
+    TResult? Function(_UpdateInformation value)? updateInfomation,
+    TResult? Function(_CreateNote value)? createNote,
+  }) {
+    return createNote?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_CreateGoodReceiptNote value)? createGoodReceiptNote,
+    TResult Function(_AddGoodReceiptNoteDetail value)? addGoodReceiptNoteDetail,
+    TResult Function(_UpdateDetail value)? updateDetail,
+    TResult Function(_UpdateInformation value)? updateInfomation,
+    TResult Function(_CreateNote value)? createNote,
+    required TResult orElse(),
+  }) {
+    if (createNote != null) {
+      return createNote(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateNote implements CreateGoodReceiptNoteEvent {
+  const factory _CreateNote(
+      {required final CreateGoodReceiptNote createdNote,
+      required final String requestId}) = _$CreateNoteImpl;
+
+  CreateGoodReceiptNote get createdNote;
+  String get requestId;
+  @JsonKey(ignore: true)
+  _$$CreateNoteImplCopyWith<_$CreateNoteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CreateGoodReceiptNoteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -523,6 +1176,9 @@ mixin _$CreateGoodReceiptNoteState {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -534,6 +1190,9 @@ mixin _$CreateGoodReceiptNoteState {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -545,6 +1204,9 @@ mixin _$CreateGoodReceiptNoteState {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -557,6 +1219,9 @@ mixin _$CreateGoodReceiptNoteState {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -568,6 +1233,9 @@ mixin _$CreateGoodReceiptNoteState {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -579,6 +1247,9 @@ mixin _$CreateGoodReceiptNoteState {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -650,6 +1321,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) {
     return initial();
   }
@@ -664,6 +1338,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) {
     return initial?.call();
   }
@@ -678,6 +1355,9 @@ class _$InitialImpl implements _Initial {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -696,6 +1376,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) {
     return initial(this);
   }
@@ -710,6 +1393,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) {
     return initial?.call(this);
   }
@@ -724,6 +1410,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -783,6 +1472,9 @@ class _$InProgressImpl implements _InProgress {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) {
     return inProgress();
   }
@@ -797,6 +1489,9 @@ class _$InProgressImpl implements _InProgress {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) {
     return inProgress?.call();
   }
@@ -811,6 +1506,9 @@ class _$InProgressImpl implements _InProgress {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -829,6 +1527,9 @@ class _$InProgressImpl implements _InProgress {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) {
     return inProgress(this);
   }
@@ -843,6 +1544,9 @@ class _$InProgressImpl implements _InProgress {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) {
     return inProgress?.call(this);
   }
@@ -857,6 +1561,9 @@ class _$InProgressImpl implements _InProgress {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -953,6 +1660,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) {
     return success(goodReceipt);
   }
@@ -967,6 +1677,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) {
     return success?.call(goodReceipt);
   }
@@ -981,6 +1694,9 @@ class _$SuccessImpl implements _Success {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -999,6 +1715,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) {
     return success(this);
   }
@@ -1013,6 +1732,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) {
     return success?.call(this);
   }
@@ -1027,6 +1749,9 @@ class _$SuccessImpl implements _Success {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1118,6 +1843,9 @@ class _$FailureImpl implements _Failure {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) {
     return failure(message);
   }
@@ -1132,6 +1860,9 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) {
     return failure?.call(message);
   }
@@ -1146,6 +1877,9 @@ class _$FailureImpl implements _Failure {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1164,6 +1898,9 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) {
     return failure(this);
   }
@@ -1178,6 +1915,9 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) {
     return failure?.call(this);
   }
@@ -1192,6 +1932,9 @@ class _$FailureImpl implements _Failure {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1258,6 +2001,9 @@ class _$UpdateNoteInProgressImpl implements _UpdateNoteInProgress {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) {
     return updateNoteInProgress();
   }
@@ -1272,6 +2018,9 @@ class _$UpdateNoteInProgressImpl implements _UpdateNoteInProgress {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) {
     return updateNoteInProgress?.call();
   }
@@ -1286,6 +2035,9 @@ class _$UpdateNoteInProgressImpl implements _UpdateNoteInProgress {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (updateNoteInProgress != null) {
@@ -1304,6 +2056,9 @@ class _$UpdateNoteInProgressImpl implements _UpdateNoteInProgress {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) {
     return updateNoteInProgress(this);
   }
@@ -1318,6 +2073,9 @@ class _$UpdateNoteInProgressImpl implements _UpdateNoteInProgress {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) {
     return updateNoteInProgress?.call(this);
   }
@@ -1332,6 +2090,9 @@ class _$UpdateNoteInProgressImpl implements _UpdateNoteInProgress {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (updateNoteInProgress != null) {
@@ -1430,6 +2191,9 @@ class _$UpdateNoteSuccessImpl implements _UpdateNoteSuccess {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) {
     return updateNoteSuccess(goodReceipt);
   }
@@ -1444,6 +2208,9 @@ class _$UpdateNoteSuccessImpl implements _UpdateNoteSuccess {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) {
     return updateNoteSuccess?.call(goodReceipt);
   }
@@ -1458,6 +2225,9 @@ class _$UpdateNoteSuccessImpl implements _UpdateNoteSuccess {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (updateNoteSuccess != null) {
@@ -1476,6 +2246,9 @@ class _$UpdateNoteSuccessImpl implements _UpdateNoteSuccess {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) {
     return updateNoteSuccess(this);
   }
@@ -1490,6 +2263,9 @@ class _$UpdateNoteSuccessImpl implements _UpdateNoteSuccess {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) {
     return updateNoteSuccess?.call(this);
   }
@@ -1504,6 +2280,9 @@ class _$UpdateNoteSuccessImpl implements _UpdateNoteSuccess {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (updateNoteSuccess != null) {
@@ -1597,6 +2376,9 @@ class _$UpdateNoteFailureImpl implements _UpdateNoteFailure {
     required TResult Function(CreateGoodReceiptNote goodReceipt)
         updateNoteSuccess,
     required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
   }) {
     return updateNoteFailure(message);
   }
@@ -1611,6 +2393,9 @@ class _$UpdateNoteFailureImpl implements _UpdateNoteFailure {
     TResult? Function()? updateNoteInProgress,
     TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
   }) {
     return updateNoteFailure?.call(message);
   }
@@ -1625,6 +2410,9 @@ class _$UpdateNoteFailureImpl implements _UpdateNoteFailure {
     TResult Function()? updateNoteInProgress,
     TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
     TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (updateNoteFailure != null) {
@@ -1643,6 +2431,9 @@ class _$UpdateNoteFailureImpl implements _UpdateNoteFailure {
     required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
     required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
     required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
   }) {
     return updateNoteFailure(this);
   }
@@ -1657,6 +2448,9 @@ class _$UpdateNoteFailureImpl implements _UpdateNoteFailure {
     TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
   }) {
     return updateNoteFailure?.call(this);
   }
@@ -1671,6 +2465,9 @@ class _$UpdateNoteFailureImpl implements _UpdateNoteFailure {
     TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
     TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
     TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
     required TResult orElse(),
   }) {
     if (updateNoteFailure != null) {
@@ -1687,5 +2484,495 @@ abstract class _UpdateNoteFailure implements CreateGoodReceiptNoteState {
   String get message;
   @JsonKey(ignore: true)
   _$$UpdateNoteFailureImplCopyWith<_$UpdateNoteFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateNoteInProgressImplCopyWith<$Res> {
+  factory _$$CreateNoteInProgressImplCopyWith(_$CreateNoteInProgressImpl value,
+          $Res Function(_$CreateNoteInProgressImpl) then) =
+      __$$CreateNoteInProgressImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CreateNoteInProgressImplCopyWithImpl<$Res>
+    extends _$CreateGoodReceiptNoteStateCopyWithImpl<$Res,
+        _$CreateNoteInProgressImpl>
+    implements _$$CreateNoteInProgressImplCopyWith<$Res> {
+  __$$CreateNoteInProgressImplCopyWithImpl(_$CreateNoteInProgressImpl _value,
+      $Res Function(_$CreateNoteInProgressImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CreateNoteInProgressImpl implements _CreateNoteInProgress {
+  const _$CreateNoteInProgressImpl();
+
+  @override
+  String toString() {
+    return 'CreateGoodReceiptNoteState.createNoteInProgress()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateNoteInProgressImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() inProgress,
+    required TResult Function(CreateGoodReceiptNote goodReceipt) success,
+    required TResult Function(String message) failure,
+    required TResult Function() updateNoteInProgress,
+    required TResult Function(CreateGoodReceiptNote goodReceipt)
+        updateNoteSuccess,
+    required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
+  }) {
+    return createNoteInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? inProgress,
+    TResult? Function(CreateGoodReceiptNote goodReceipt)? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? updateNoteInProgress,
+    TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
+    TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
+  }) {
+    return createNoteInProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgress,
+    TResult Function(CreateGoodReceiptNote goodReceipt)? success,
+    TResult Function(String message)? failure,
+    TResult Function()? updateNoteInProgress,
+    TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
+    TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
+    required TResult orElse(),
+  }) {
+    if (createNoteInProgress != null) {
+      return createNoteInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
+    required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
+    required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
+  }) {
+    return createNoteInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
+    TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
+    TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
+  }) {
+    return createNoteInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
+    TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
+    TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
+    required TResult orElse(),
+  }) {
+    if (createNoteInProgress != null) {
+      return createNoteInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateNoteInProgress implements CreateGoodReceiptNoteState {
+  const factory _CreateNoteInProgress() = _$CreateNoteInProgressImpl;
+}
+
+/// @nodoc
+abstract class _$$CreateNoteSuccessImplCopyWith<$Res> {
+  factory _$$CreateNoteSuccessImplCopyWith(_$CreateNoteSuccessImpl value,
+          $Res Function(_$CreateNoteSuccessImpl) then) =
+      __$$CreateNoteSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CreateNoteSuccessImplCopyWithImpl<$Res>
+    extends _$CreateGoodReceiptNoteStateCopyWithImpl<$Res,
+        _$CreateNoteSuccessImpl>
+    implements _$$CreateNoteSuccessImplCopyWith<$Res> {
+  __$$CreateNoteSuccessImplCopyWithImpl(_$CreateNoteSuccessImpl _value,
+      $Res Function(_$CreateNoteSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CreateNoteSuccessImpl implements _CreateNoteSuccess {
+  const _$CreateNoteSuccessImpl();
+
+  @override
+  String toString() {
+    return 'CreateGoodReceiptNoteState.createNoteSuccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CreateNoteSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() inProgress,
+    required TResult Function(CreateGoodReceiptNote goodReceipt) success,
+    required TResult Function(String message) failure,
+    required TResult Function() updateNoteInProgress,
+    required TResult Function(CreateGoodReceiptNote goodReceipt)
+        updateNoteSuccess,
+    required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
+  }) {
+    return createNoteSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? inProgress,
+    TResult? Function(CreateGoodReceiptNote goodReceipt)? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? updateNoteInProgress,
+    TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
+    TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
+  }) {
+    return createNoteSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgress,
+    TResult Function(CreateGoodReceiptNote goodReceipt)? success,
+    TResult Function(String message)? failure,
+    TResult Function()? updateNoteInProgress,
+    TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
+    TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
+    required TResult orElse(),
+  }) {
+    if (createNoteSuccess != null) {
+      return createNoteSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
+    required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
+    required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
+  }) {
+    return createNoteSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
+    TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
+    TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
+  }) {
+    return createNoteSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
+    TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
+    TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
+    required TResult orElse(),
+  }) {
+    if (createNoteSuccess != null) {
+      return createNoteSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateNoteSuccess implements CreateGoodReceiptNoteState {
+  const factory _CreateNoteSuccess() = _$CreateNoteSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$CreateNoteFailureImplCopyWith<$Res> {
+  factory _$$CreateNoteFailureImplCopyWith(_$CreateNoteFailureImpl value,
+          $Res Function(_$CreateNoteFailureImpl) then) =
+      __$$CreateNoteFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? error});
+}
+
+/// @nodoc
+class __$$CreateNoteFailureImplCopyWithImpl<$Res>
+    extends _$CreateGoodReceiptNoteStateCopyWithImpl<$Res,
+        _$CreateNoteFailureImpl>
+    implements _$$CreateNoteFailureImplCopyWith<$Res> {
+  __$$CreateNoteFailureImplCopyWithImpl(_$CreateNoteFailureImpl _value,
+      $Res Function(_$CreateNoteFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$CreateNoteFailureImpl(
+      freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateNoteFailureImpl implements _CreateNoteFailure {
+  const _$CreateNoteFailureImpl(this.error);
+
+  @override
+  final String? error;
+
+  @override
+  String toString() {
+    return 'CreateGoodReceiptNoteState.createNoteFailure(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateNoteFailureImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateNoteFailureImplCopyWith<_$CreateNoteFailureImpl> get copyWith =>
+      __$$CreateNoteFailureImplCopyWithImpl<_$CreateNoteFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() inProgress,
+    required TResult Function(CreateGoodReceiptNote goodReceipt) success,
+    required TResult Function(String message) failure,
+    required TResult Function() updateNoteInProgress,
+    required TResult Function(CreateGoodReceiptNote goodReceipt)
+        updateNoteSuccess,
+    required TResult Function(String message) updateNoteFailure,
+    required TResult Function() createNoteInProgress,
+    required TResult Function() createNoteSuccess,
+    required TResult Function(String? error) createNoteFailure,
+  }) {
+    return createNoteFailure(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? inProgress,
+    TResult? Function(CreateGoodReceiptNote goodReceipt)? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? updateNoteInProgress,
+    TResult? Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
+    TResult? Function(String message)? updateNoteFailure,
+    TResult? Function()? createNoteInProgress,
+    TResult? Function()? createNoteSuccess,
+    TResult? Function(String? error)? createNoteFailure,
+  }) {
+    return createNoteFailure?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgress,
+    TResult Function(CreateGoodReceiptNote goodReceipt)? success,
+    TResult Function(String message)? failure,
+    TResult Function()? updateNoteInProgress,
+    TResult Function(CreateGoodReceiptNote goodReceipt)? updateNoteSuccess,
+    TResult Function(String message)? updateNoteFailure,
+    TResult Function()? createNoteInProgress,
+    TResult Function()? createNoteSuccess,
+    TResult Function(String? error)? createNoteFailure,
+    required TResult orElse(),
+  }) {
+    if (createNoteFailure != null) {
+      return createNoteFailure(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateNoteInProgress value) updateNoteInProgress,
+    required TResult Function(_UpdateNoteSuccess value) updateNoteSuccess,
+    required TResult Function(_UpdateNoteFailure value) updateNoteFailure,
+    required TResult Function(_CreateNoteInProgress value) createNoteInProgress,
+    required TResult Function(_CreateNoteSuccess value) createNoteSuccess,
+    required TResult Function(_CreateNoteFailure value) createNoteFailure,
+  }) {
+    return createNoteFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateNoteInProgress value)? updateNoteInProgress,
+    TResult? Function(_UpdateNoteSuccess value)? updateNoteSuccess,
+    TResult? Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult? Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult? Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult? Function(_CreateNoteFailure value)? createNoteFailure,
+  }) {
+    return createNoteFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateNoteInProgress value)? updateNoteInProgress,
+    TResult Function(_UpdateNoteSuccess value)? updateNoteSuccess,
+    TResult Function(_UpdateNoteFailure value)? updateNoteFailure,
+    TResult Function(_CreateNoteInProgress value)? createNoteInProgress,
+    TResult Function(_CreateNoteSuccess value)? createNoteSuccess,
+    TResult Function(_CreateNoteFailure value)? createNoteFailure,
+    required TResult orElse(),
+  }) {
+    if (createNoteFailure != null) {
+      return createNoteFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateNoteFailure implements CreateGoodReceiptNoteState {
+  const factory _CreateNoteFailure(final String? error) =
+      _$CreateNoteFailureImpl;
+
+  String? get error;
+  @JsonKey(ignore: true)
+  _$$CreateNoteFailureImplCopyWith<_$CreateNoteFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -11,4 +11,17 @@ class CreateGoodReceiptNoteEvent with _$CreateGoodReceiptNoteEvent {
   const factory CreateGoodReceiptNoteEvent.addGoodReceiptNoteDetail({
     required QrCodeData qrCodeData,
   }) = _AddGoodReceiptNoteDetail;
+
+  const factory CreateGoodReceiptNoteEvent.updateDetail({
+    required int index,
+    required GoodReceipNoteDetail item,
+  }) = _UpdateDetail;
+
+  const factory CreateGoodReceiptNoteEvent.updateInfomation(
+      {required CreateGoodReceiptNote updatedInfo}) = _UpdateInformation;
+
+      const factory CreateGoodReceiptNoteEvent.createNote({
+    required CreateGoodReceiptNote createdNote,
+    required String requestId,
+  }) = _CreateNote;
 }

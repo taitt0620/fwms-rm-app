@@ -5,9 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fwms_rm_app/common/widgets/appbar.dart';
 import 'package:fwms_rm_app/features/qr-scan/bloc/qr_scan_bloc.dart';
 import 'package:fwms_rm_app/features/qr-scan/models/qr_code_data.dart';
-import 'package:fwms_rm_app/screens/qr_scan/qr_detail_screen.dart';
 import 'package:fwms_rm_app/screens/qr_scan/widgets/analyze_image_from_gallery_button.dart';
-import 'package:fwms_rm_app/screens/qr_scan/widgets/scanned_barcode_label.dart';
 import 'package:fwms_rm_app/screens/qr_scan/widgets/scanner_error_widget.dart';
 import 'package:fwms_rm_app/screens/qr_scan/widgets/start_stop_mobile_scanner_button.dart';
 import 'package:fwms_rm_app/screens/qr_scan/widgets/switch_camera_button.dart';
@@ -218,17 +216,34 @@ class _QrScanScreenState extends State<QrScanScreen>
               return ScannerErrorWidget(error: error);
             },
             onDetect: (barcodes) {
-              final barcode = barcodes.barcodes.firstOrNull;
+              final barcode = barcodes.raw;
               if (barcode != null) {
-                setState(
-                  () {
-                    final qrCodeData = _parseQRCodeData(barcode.displayValue!);
+                if (barcode.toString().contains('Image:') &&
+                    barcode.toString().contains('Name:') &&
+                    barcode.toString().contains('Unit:') &&
+                    barcode.toString().contains('Is Quality Checked:')) {
+                  try {
+                    setState(
+                      () {
+                        final qrCodeData = _parseQRCodeData(barcode.toString());
+                        controller.stop();
+                        context
+                            .read<QrScanBloc>()
+                            .add(QrScanEvent.qrCodeScanned(qrCodeData));
+                        context.pop();
+                      },
+                    );
+                  } catch (e) {
+                    DelightfulToastHelper.error(
+                        context, 'QR Code Data Error', 'An error occurred: $e');
+                  }
+                } else {
+                  // Xử lý trường hợp QR code không đúng định dạng
 
-                    controller.stop();
-                    context.read<QrScanBloc>().add(QrScanEvent.qrCodeScanned(qrCodeData));
-                    context.pop();
-                  },
-                );
+                  DelightfulToastHelper.error(
+                      context, 'QR Code Format Error', 'Format Qr code error');
+                  controller.stop();
+                }
               }
             },
             // overlayBuilder: (context, constraints) {
@@ -277,69 +292,5 @@ class _QrScanScreenState extends State<QrScanScreen>
         ],
       ),
     );
-  }
-}
-
-class ScannerOverlay extends CustomPainter {
-  const ScannerOverlay({
-    required this.scanWindow,
-    this.borderRadius = 12.0,
-  });
-
-  final Rect scanWindow;
-  final double borderRadius;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    // TODO: use `Offset.zero & size` instead of Rect.largest
-    // we need to pass the size to the custom paint widget
-    final backgroundPath = Path()..addRect(Rect.largest);
-
-    final cutoutPath = Path()
-      ..addRRect(
-        RRect.fromRectAndCorners(
-          scanWindow,
-          topLeft: Radius.circular(borderRadius),
-          topRight: Radius.circular(borderRadius),
-          bottomLeft: Radius.circular(borderRadius),
-          bottomRight: Radius.circular(borderRadius),
-        ),
-      );
-
-    final backgroundPaint = Paint()
-      ..color = Colors.black.withOpacity(0.5)
-      ..style = PaintingStyle.fill
-      ..blendMode = BlendMode.dstOut;
-
-    final backgroundWithCutout = Path.combine(
-      PathOperation.difference,
-      backgroundPath,
-      cutoutPath,
-    );
-
-    final borderPaint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4.0;
-
-    final borderRect = RRect.fromRectAndCorners(
-      scanWindow,
-      topLeft: Radius.circular(borderRadius),
-      topRight: Radius.circular(borderRadius),
-      bottomLeft: Radius.circular(borderRadius),
-      bottomRight: Radius.circular(borderRadius),
-    );
-
-    // First, draw the background,
-    // with a cutout area that is a bit larger than the scan window.
-    // Finally, draw the scan window itself.
-    canvas.drawPath(backgroundWithCutout, backgroundPaint);
-    canvas.drawRRect(borderRect, borderPaint);
-  }
-
-  @override
-  bool shouldRepaint(ScannerOverlay oldDelegate) {
-    return scanWindow != oldDelegate.scanWindow ||
-        borderRadius != oldDelegate.borderRadius;
   }
 }

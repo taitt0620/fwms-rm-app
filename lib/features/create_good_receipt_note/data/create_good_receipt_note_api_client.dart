@@ -1,20 +1,20 @@
 import 'package:dio/dio.dart';
-import 'package:fwms_rm_app/features/create_quality_control_report/models/create_quality_control_report.dart';
+import 'package:fwms_rm_app/features/create_good_receipt_note/models/create_good_receipt_note.dart';
 
-class CreateQualityControlReportApiClient {
+class CreateGoodReceiptNoteApiClient {
   final Dio dio;
 
-  CreateQualityControlReportApiClient(this.dio);
+  CreateGoodReceiptNoteApiClient(this.dio);
 
-  Future<void> createReport({
-    required CreateQualityControlReport report,
+  Future<void> createNote({
+    required CreateGoodReceiptNote note,
     required String token,
     required String requestId,
   }) async {
     try {
       final response = await dio.post(
-        '/QualityControlReport/$requestId/request',
-        data: report.toJson(),
+        '/good-receipt-note/$requestId/request',
+        data: note.toJson(),
         options: Options(headers: {
           'Authorization': 'Bearer $token',
         }),
